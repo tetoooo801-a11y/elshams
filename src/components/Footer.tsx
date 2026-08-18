@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom"
 import logoUrl from "../imports/logo-05.svg"
 import emblemUrl from "../imports/logo-12-1.svg"
-import footerLogoUrl from "../imports/logo-07__1_.svg"
+import footerLogoUrl from "../imports/footer-logo-full.png"
 import { useLang } from "../context/LangContext"
 
 /* ── inline SVGs ── */
@@ -127,7 +127,7 @@ export default function Footer() {
 
 {/* Brand */}
           <div style={{ textAlign: "center", marginBottom: 24, position: "relative", zIndex: 2 }}>
-            <img src={footerLogoUrl} alt="logo" style={{ height: 80, marginBottom: 0, display: "inline-block" }} />
+            <img src={footerLogoUrl} alt="ELSHAMS Freight & Logistics" style={{ height: 80, maxWidth: "100%", width: "auto", objectFit: "contain", marginBottom: 0, display: "inline-block" }} />
           </div>
 
           {/* 4 columns */}
