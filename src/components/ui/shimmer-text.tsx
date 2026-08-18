@@ -18,10 +18,10 @@ export function ShimmerText({
   as: Tag = "div",
 }: ShimmerTextProps) {
   return (
-    <Tag className={className} style={{ overflowX: "hidden", overflowY: "visible", paddingBottom: "0.12em", ...style }}>
+    <Tag className={className} style={{ overflow: "visible", paddingBottom: "0.12em", ...style }}>
       <motion.span
         style={{
-          display: "inline",
+          display: "inline-block",
           WebkitTextFillColor: "transparent",
           background:
             "currentColor linear-gradient(to right, currentColor 0%, rgba(255,255,255,0.75) 40%, rgba(255,255,255,0.75) 60%, currentColor 100%)",

@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap');
 
 /* ===== LOADING SCREEN ===== */
 .loading-screen {
@@ -119,12 +120,17 @@
 
 /* ===== Language-based font switching ===== */
 /* Arabic (default): IBM Plex Sans Arabic */
-[lang="ar"] body,
-[lang="ar"] { font-family: 'IBM Plex Sans Arabic', sans-serif; }
-[lang="ar"] h1, [lang="ar"] h2, [lang="ar"] h3, [lang="ar"] h4,
+[lang="ar"],
+[lang="ar"] * {
+  font-family: 'IBM Plex Sans Arabic', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: normal !important;
+}
+[lang="ar"] h1, [lang="ar"] h2, [lang="ar"] h3, [lang="ar"] h4, [lang="ar"] h5, [lang="ar"] h6,
 [lang="ar"] .display, [lang="ar"] .logo,
-[lang="ar"] .marquee-track span, [lang="ar"] .client-name {
-  font-family: 'IBM Plex Sans Arabic', sans-serif;
+[lang="ar"] .marquee-track span, [lang="ar"] .client-name,
+[lang="ar"] p, [lang="ar"] span, [lang="ar"] a, [lang="ar"] button, [lang="ar"] div, [lang="ar"] label {
+  font-family: 'IBM Plex Sans Arabic', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: normal !important;
 }
 
 /* English: Nexa for all non-mono text */
