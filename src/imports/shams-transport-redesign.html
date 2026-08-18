@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الشمس للنقل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#3B4CF0;
+    --black:#0B0B0C;
+    --ink:#141416;
+    --cream:#F7F7F5;
+    --muted:#6B6B70;
+    --line:#E8E8E6;
+    --radius:20px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Cairo', sans-serif;
+    background:#fff;
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 32px;}
+
+  /* ===== NAVBAR ===== */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 32px;max-width:1240px;margin:0 auto;
+  }
+  .logo{
+    display:flex;align-items:center;gap:8px;
+    font-weight:800;font-size:17px;letter-spacing:-.2px;
+  }
+  .logo .dot{
+    width:26px;height:26px;border-radius:50%;
+    background:linear-gradient(135deg,var(--blue),#7B5CF0);
+    flex-shrink:0;
+  }
+  .nav-links{
+    display:flex;align-items:center;gap:32px;
+    list-style:none;
+  }
+  .nav-links a{
+    text-decoration:none;color:var(--ink);font-size:14.5px;font-weight:500;
+    opacity:.75;transition:opacity .2s;
+  }
+  .nav-links a.active{opacity:1;font-weight:700;}
+  .nav-links a:hover{opacity:1;}
+  .nav-right{display:flex;align-items:center;gap:12px;}
+  .lang-pill{
+    border:1px solid var(--line);border-radius:999px;
+    padding:7px 16px;font-size:13px;font-weight:600;
+    background:#fff;cursor:pointer;
+  }
+  .btn-nav{
+    background:var(--black);color:#fff;border:none;
+    border-radius:999px;padding:9px 20px;font-size:13.5px;font-weight:600;
+    font-family:inherit;cursor:pointer;white-space:nowrap;
+  }
+
+  /* ===== HERO ===== */
+  .hero-section{padding:20px 32px 0;max-width:1240px;margin:0 auto;}
+  .hero{
+    position:relative;
+    border-radius:var(--radius);
+    overflow:hidden;
+    height:640px;
+    background:
+      linear-gradient(0deg, rgba(5,7,15,.88) 0%, rgba(5,7,15,.55) 35%, rgba(5,7,15,.15) 60%, rgba(10,15,30,.35) 100%),
+      linear-gradient(120deg,#3a4658,#1b2430);
+  }
+  .hero-eyebrow{
+    position:absolute;top:36px;left:36px;
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(6px);
+    border:1px solid rgba(255,255,255,.2);
+    color:#fff;font-size:13px;font-weight:600;
+    padding:8px 16px;border-radius:999px;
+  }
+  .hero-content{
+    position:absolute;bottom:0;right:0;left:0;
+    padding:56px;
+  }
+  .hero-content h1{
+    color:#fff;font-size:56px;font-weight:800;line-height:1.18;
+    letter-spacing:-1px;max-width:680px;margin-bottom:20px;
+  }
+  .hero-content p{
+    color:rgba(255,255,255,.82);font-size:15.5px;line-height:1.8;
+    max-width:480px;margin-bottom:32px;font-weight:400;
+  }
+  .btn-primary{
+    display:inline-flex;align-items:center;gap:10px;
+    background:#fff;color:var(--black);
+    border:none;border-radius:999px;
+    padding:16px 30px;font-size:15px;font-weight:700;
+    font-family:inherit;cursor:pointer;
+    transition:transform .2s, background .2s;
+  }
+  .btn-primary:hover{transform:translateY(-2px);background:#f0f0f0;}
+  .btn-primary svg{width:16px;height:16px;transform:scaleX(-1);}
+
+  /* ===== CTA ROW ===== */
+  .cta-row{
+    max-width:1240px;margin:20px auto 0;padding:0 32px;
+    display:grid;grid-template-columns:1.4fr 1fr;gap:20px;
+  }
+  .cta-image{
+    border-radius:var(--radius);overflow:hidden;height:280px;
+    background:linear-gradient(135deg,#4a7fc9,#87c5ea);
+    position:relative;
+  }
+  .cta-image .tag{
+    position:absolute;bottom:20px;right:20px;
+    background:rgba(0,0,0,.55);color:#fff;font-size:12.5px;font-weight:600;
+    padding:7px 14px;border-radius:999px;backdrop-filter:blur(4px);
+  }
+  .cta-box{
+    background:var(--black);border-radius:var(--radius);
+    height:280px;padding:36px;
+    display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .cta-box .icon{
+    width:44px;height:44px;border-radius:12px;
+    background:rgba(255,255,255,.08);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .cta-box .icon svg{width:22px;height:22px;stroke:#fff;transform:scaleX(-1);}
+  .cta-box p{
+    color:rgba(255,255,255,.75);font-size:14.5px;line-height:1.75;
+    margin:20px 0;
+  }
+  .btn-secondary{
+    background:var(--blue);color:#fff;border:none;
+    border-radius:999px;padding:13px 22px;font-size:13.5px;font-weight:700;
+    font-family:inherit;cursor:pointer;width:fit-content;
+    transition:background .2s;
+  }
+  .btn-secondary:hover{background:#2f3ecf;}
+
+  /* ===== STATS / ABOUT ===== */
+  .about-section{
+    max-width:1240px;margin:0 auto;padding:120px 32px;
+    display:grid;grid-template-columns:1fr 1.3fr;gap:60px;align-items:start;
+  }
+  .stats-grid{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:36px 40px;
+  }
+  .stat-num{font-size:44px;font-weight:800;letter-spacing:-1px;line-height:1;margin-bottom:8px;}
+  .stat-label{font-size:13.5px;color:var(--muted);line-height:1.6;font-weight:500;}
+  .about-copy .eyebrow{
+    display:inline-block;font-size:12.5px;font-weight:700;color:var(--blue);
+    margin-bottom:14px;letter-spacing:.3px;
+  }
+  .about-copy h2{font-size:32px;font-weight:800;line-height:1.4;margin-bottom:18px;letter-spacing:-.5px;}
+  .about-copy p{font-size:15px;line-height:1.9;color:var(--muted);margin-bottom:28px;max-width:480px;}
+  .logos-row{display:flex;gap:32px;align-items:center;flex-wrap:wrap;}
+  .logos-row span{font-size:14px;font-weight:700;color:#b7b7bb;}
+
+  /* ===== SERVICES ===== */
+  .services-section{max-width:1240px;margin:0 auto;padding:0 32px 120px;}
+  .section-head{
+    display:flex;align-items:center;justify-content:space-between;
+    margin-bottom:44px;
+  }
+  .section-head h2{font-size:32px;font-weight:800;letter-spacing:-.5px;}
+  .arrows{display:flex;gap:10px;}
+  .arrow-btn{
+    width:44px;height:44px;border-radius:50%;
+    border:1px solid var(--line);background:#fff;
+    display:flex;align-items:center;justify-content:center;cursor:pointer;
+    transition:background .2s;
+  }
+  .arrow-btn.dark{background:var(--black);border-color:var(--black);}
+  .arrow-btn.dark svg{stroke:#fff;}
+  .arrow-btn svg{width:16px;height:16px;stroke:var(--ink);}
+  .services-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+  }
+  .service-card{cursor:default;}
+  .service-img{
+    border-radius:16px;height:220px;position:relative;overflow:hidden;
+    margin-bottom:18px;
+  }
+  .service-img .num{
+    position:absolute;top:16px;right:16px;
+    color:#fff;font-size:13px;font-weight:700;
+    background:rgba(0,0,0,.35);backdrop-filter:blur(4px);
+    padding:5px 11px;border-radius:999px;
+  }
+  .service-card h3{font-size:17px;font-weight:700;margin-bottom:8px;}
+  .service-card p{font-size:13.5px;color:var(--muted);line-height:1.7;}
+
+  .si1{background:linear-gradient(160deg,#2b2f36,#4a4f57);}
+  .si2{background:linear-gradient(160deg,#e8a24e,#f3c98a);}
+  .si3{background:linear-gradient(160deg,#3a6ea5,#7fb3d9);}
+  .si4{background:linear-gradient(160deg,#1f4fa3,#4a7fc9);}
+
+  /* ===== FLEET GALLERY ===== */
+  .fleet-section{
+    max-width:1240px;margin:0 auto;padding:0 32px 120px;
+    display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;
+  }
+  .fleet-grid{
+    display:grid;grid-template-columns:1.15fr 1fr;gap:18px;
+  }
+  .fleet-img{
+    border-radius:16px;position:relative;overflow:hidden;
+  }
+  .fleet-img .tag{
+    position:absolute;bottom:16px;right:16px;
+    background:rgba(0,0,0,.55);color:#fff;font-size:12px;font-weight:600;
+    padding:6px 13px;border-radius:999px;backdrop-filter:blur(4px);
+  }
+  .fleet-main{height:100%;min-height:460px;}
+  .fleet-col{display:flex;flex-direction:column;gap:18px;}
+  .fleet-col .fleet-img{height:140px;}
+  .fi1{background:linear-gradient(160deg,#3a3f47,#5b6068);}
+  .fi2{background:linear-gradient(160deg,#c99a3e,#e8c374);}
+  .fi3{background:linear-gradient(160deg,#4a5568,#8a94a6);}
+  .fi4{background:linear-gradient(160deg,#1f4fa3,#4a7fc9);}
+
+  .fleet-copy{padding-top:20px;}
+  .fleet-copy h2{font-size:32px;font-weight:800;line-height:1.4;margin-bottom:16px;letter-spacing:-.5px;}
+  .fleet-copy p{font-size:15px;line-height:1.9;color:var(--muted);margin-bottom:36px;max-width:420px;}
+  .circle-btn{
+    width:130px;height:130px;border-radius:50%;
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;font-size:13px;font-weight:700;line-height:1.5;
+    cursor:pointer;padding:10px;
+  }
+
+  /* ===== INDUSTRIES (dark) ===== */
+  .industries{
+    background:var(--black);color:#fff;padding:110px 0 60px;
+    text-align:center;overflow:hidden;
+  }
+  .industries .eyebrow{color:var(--blue);font-size:12.5px;font-weight:700;margin-bottom:14px;}
+  .industries h2{font-size:36px;font-weight:800;margin-bottom:14px;letter-spacing:-.5px;}
+  .industries p{color:rgba(255,255,255,.6);font-size:15px;margin-bottom:44px;}
+  .pill-row{
+    display:flex;justify-content:center;gap:12px;flex-wrap:wrap;
+    max-width:900px;margin:0 auto 70px;padding:0 32px;
+  }
+  .pill{
+    border:1px solid rgba(255,255,255,.18);border-radius:999px;
+    padding:11px 20px;font-size:13.5px;font-weight:600;
+    display:flex;align-items:center;gap:8px;color:#fff;
+  }
+  .pill .d{width:6px;height:6px;border-radius:50%;background:var(--blue);}
+  .marquee{
+    display:flex;gap:40px;white-space:nowrap;
+    border-top:1px solid rgba(255,255,255,.1);
+    border-bottom:1px solid rgba(255,255,255,.1);
+    padding:22px 0;
+    font-size:14px;font-weight:700;color:rgba(255,255,255,.4);
+    animation:scroll 22s linear infinite;
+  }
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .marquee span{display:flex;align-items:center;gap:40px;}
+  .marquee .d{width:5px;height:5px;border-radius:50%;background:var(--blue);}
+  .clients-row{
+    display:flex;justify-content:center;gap:48px;align-items:center;
+    padding:56px 32px 0;flex-wrap:wrap;
+  }
+  .clients-row .label{
+    width:100%;text-align:center;font-size:12.5px;color:rgba(255,255,255,.4);margin-bottom:24px;
+  }
+  .clients-row span{font-size:16px;font-weight:700;color:rgba(255,255,255,.5);}
+
+  /* ===== FINAL CTA ===== */
+  .final-cta{
+    background:var(--blue);color:#fff;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:56px 32px;max-width:1240px;margin:0 auto;
+    flex-wrap:wrap;gap:24px;
+  }
+  .final-cta h2{font-size:28px;font-weight:800;}
+  .btn-white{
+    background:#fff;color:var(--blue);border:none;
+    border-radius:999px;padding:15px 28px;font-size:14.5px;font-weight:700;
+    font-family:inherit;cursor:pointer;
+  }
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--black);color:#fff;padding:70px 32px 28px;}
+  .footer-grid{
+    max-width:1240px;margin:0 auto;
+    display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;
+    padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .footer-brand .logo{color:#fff;margin-bottom:14px;}
+  .footer-brand p{color:rgba(255,255,255,.5);font-size:13.5px;line-height:1.8;max-width:260px;}
+  .footer-col h4{font-size:13.5px;font-weight:700;margin-bottom:18px;color:#fff;}
+  .footer-col a{
+    display:block;color:rgba(255,255,255,.55);text-decoration:none;
+    font-size:13.5px;margin-bottom:12px;line-height:1.6;
+  }
+  .footer-bottom{
+    max-width:1240px;margin:0 auto;padding-top:22px;
+    display:flex;justify-content:space-between;
+    font-size:12.5px;color:rgba(255,255,255,.4);flex-wrap:wrap;gap:10px;
+  }
+
+  @media (max-width:900px){
+    .nav-links{display:none;}
+    .hero-content h1{font-size:36px;}
+    .about-section,.fleet-section{grid-template-columns:1fr;}
+    .stats-grid{gap:28px;}
+    .cta-row{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:1fr 1fr;}
+    .fleet-grid{grid-template-columns:1fr;}
+    .final-cta{flex-direction:column;text-align:center;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo"><span>الشمس للنقل</span><div class="dot"></div></div>
+    <ul class="nav-links">
+      <li><a href="#" class="active">الرئيسية</a></li>
+      <li><a href="#">من نحن</a></li>
+      <li><a href="#">خدماتنا</a></li>
+      <li><a href="#">الأسطول</a></li>
+      <li><a href="#">الأخبار</a></li>
+      <li><a href="#">تواصل معنا</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="lang-pill">EN</button>
+    </div>
+  </nav>
+</header>
+
+<section class="hero-section">
+  <div class="hero">
+    <div class="hero-eyebrow">شريكك الموثوق منذ 2002</div>
+    <div class="hero-content">
+      <h1>نُحرّك بضاعتك<br>برًا وبحرًا وجوًا</h1>
+      <p>أكثر من 20 عامًا من الخبرة في خدمة المصانع والشركات الصناعية، بأسطول متكامل يغطي شحن رمضان من العاصمة الإدارية إلى دول الخليج والعالم العربي.</p>
+      <button class="btn-primary">
+        اطلب عرض سعر
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<div class="cta-row">
+  <div class="cta-image"><div class="tag">أسطول شاحنات SCANIA</div></div>
+  <div class="cta-box">
+    <div class="icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 17h13V6H3v11zM16 10h3l3 3v4h-6v-7zM8 20a2 2 0 100-4 2 2 0 000 4zM18 20a2 2 0 100-4 2 2 0 000 4z"/></svg>
+    </div>
+    <p>جاهز تنقل بضاعتك؟ فريقنا مستعد لخدمتك على مدار الساعة، من التسعير للتسليم.</p>
+    <button class="btn-secondary">اطلب عرض سعر مجاني</button>
+  </div>
+</div>
+
+<section class="about-section">
+  <div class="stats-grid">
+    <div><div class="stat-num">+500</div><div class="stat-label">عملية نقل ناجحة سنويًا</div></div>
+    <div><div class="stat-num">+20</div><div class="stat-label">سنة خبرة في خدمة الصناعة المصرية</div></div>
+    <div><div class="stat-num">+06</div><div class="stat-label">دول تغطية إقليمية</div></div>
+    <div><div class="stat-num">%98</div><div class="stat-label">معدل الالتزام بمواعيد التسليم</div></div>
+  </div>
+  <div class="about-copy">
+    <span class="eyebrow">من نحن</span>
+    <h2>شراكة صناعية ممتدة منذ 2002</h2>
+    <p>تأسست شركة الشمس للنقل في قلب المنطقة الصناعية بمدينة العاشر من رمضان، لتصبح على مدار أكثر من عقدين شريكًا موثوقًا للمصانع والشركات التجارية داخل مصر وخارجها.</p>
+    <div class="logos-row">
+      <span>Americana</span><span>Farm Frites</span><span>ElPICO</span>
+    </div>
+  </div>
+</section>
+
+<section class="services-section">
+  <div class="section-head">
+    <h2>الخدمات التي نقدمها</h2>
+    <div class="arrows">
+      <div class="arrow-btn"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-width="2"><path d="M14 6l-6 6 6 6"/></svg></div>
+      <div class="arrow-btn dark"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-width="2"><path d="M10 6l6 6-6 6"/></svg></div>
+    </div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-img si1"><span class="num">01</span></div>
+      <h3>النقل البري الدولي</h3>
+      <p>تغطية شاملة داخل مصر وخارجها بأسطول متنوع.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-img si2"><span class="num">02</span></div>
+      <h3>الشحن البحري</h3>
+      <p>حاويات 20 و40 قدم لكل الموانئ الرئيسية.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-img si3"><span class="num">03</span></div>
+      <h3>الشحن الجوي</h3>
+      <p>حلول سريعة تناسب أولوية التسليم.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-img si4"><span class="num">04</span></div>
+      <h3>إدارة سلاسل الإمداد</h3>
+      <p>إدارة كاملة تضمن كفاءة والتزامًا بالمواعيد.</p>
+    </div>
+  </div>
+</section>
+
+<section class="fleet-section">
+  <div class="fleet-grid">
+    <div class="fleet-img fleet-main fi1"><span class="tag">دبابات النقل</span></div>
+    <div class="fleet-col">
+      <div class="fleet-img fi2"><span class="tag">حاويات جافة</span></div>
+      <div class="fleet-img fi3"><span class="tag">حاويات مبردة</span></div>
+      <div class="fleet-img fi4"><span class="tag">سيارات فلات بيد</span></div>
+    </div>
+  </div>
+  <div class="fleet-copy">
+    <h2>أسطولنا المجهز<br>لكل نوع حمولة</h2>
+    <p>نستعرض أسطولنا المتنوع الذي يعكس التزامنا بالكفاءة التشغيلية والأمان ورضا العميل في كل رحلة نقل.</p>
+    <div class="circle-btn">شاهد الأسطول كاملًا</div>
+  </div>
+</section>
+
+<section class="industries">
+  <span class="eyebrow">القطاعات التي نخدمها</span>
+  <h2>ثقة صناعات متنوعة</h2>
+  <p>نخدم قطاعات حساسة تتطلب دقة والتزامًا في كل عملية نقل</p>
+  <div class="pill-row">
+    <div class="pill"><span class="d"></span>الصناعات الغذائية</div>
+    <div class="pill"><span class="d"></span>الصناعات الدوائية</div>
+    <div class="pill"><span class="d"></span>الصناعات الهندسية</div>
+    <div class="pill"><span class="d"></span>الصناعات الكيماوية</div>
+    <div class="pill"><span class="d"></span>الاستيراد والتصدير</div>
+    <div class="pill"><span class="d"></span>التوزيع واللوجستيات</div>
+  </div>
+  <div class="marquee">
+    <span>
+      <span>الشمس للنقل</span><span class="d"></span><span>نقل بري</span><span class="d"></span><span>شحن بحري</span><span class="d"></span><span>شحن جوي</span><span class="d"></span><span>خدمات لوجستية</span><span class="d"></span>
+      <span>الشمس للنقل</span><span class="d"></span><span>نقل بري</span><span class="d"></span><span>شحن بحري</span><span class="d"></span><span>شحن جوي</span><span class="d"></span><span>خدمات لوجستية</span><span class="d"></span>
+    </span>
+  </div>
+  <div class="clients-row">
+    <span class="label">عملاؤنا</span>
+    <span>ICAPP</span><span>Americana</span><span>Farm Frites</span><span>ElPICO</span>
+  </div>
+</section>
+
+<section style="max-width:1240px;margin:0 auto;">
+  <div class="final-cta" style="border-radius:24px;margin:60px 32px;">
+    <h2>جاهز تنقل بضاعتك معانا؟</h2>
+    <button class="btn-white">اطلب عرض سعر الآن</button>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo"><span>الشمس للنقل</span></div>
+      <p>شريكك الموثوق في حلول النقل والخدمات اللوجستية منذ عام 2002.</p>
+    </div>
+    <div class="footer-col">
+      <h4>الشركة</h4>
+      <a href="#">من نحن</a>
+      <a href="#">خدماتنا</a>
+      <a href="#">الأسطول</a>
+      <a href="#">الأخبار</a>
+    </div>
+    <div class="footer-col">
+      <h4>تواصل</h4>
+      <a href="#">العاشر من رمضان – الشرقية</a>
+      <a href="#">منطقة الأربعية – سوق الجملة</a>
+      <a href="#">المنطقة الرابعة – مكتب 16</a>
+    </div>
+    <div class="footer-col">
+      <h4>تابعنا</h4>
+      <a href="#">LinkedIn</a>
+      <a href="#">WhatsApp</a>
+      <a href="#">Facebook</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 شركة الشمس للنقل. جميع الحقوق محفوظة.</span>
+    <span>تصميم وتطوير Merge</span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "title": "ElSHAMS",
+  "description": "Provides a simple, user-friendly platform to help users efficiently start and manage tasks or projects, boosting productivity and focus.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ELSHAMS Footer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #16336f;
+    --navy-2: #1c4494;
+    --card-bg: #f6f7f9;
+    --text-dark: #1b2430;
+    --text-muted: #55606e;
+    --accent-line: #2f6fed;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Cairo', sans-serif;
+    background:
+      linear-gradient(rgba(200,205,215,.55), rgba(200,205,215,.55)),
+      url('https://images.unsplash.com/photo-1580674285054-bed31e145f59?q=80&w=1600&auto=format&fit=crop');
+    background-size:cover;
+    background-position:center;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:60px 20px;
+  }
+
+  .footer-wrap{
+    position:relative;
+    width:100%;
+    max-width:1400px;
+  }
+
+  /* Compass logo */
+  .compass{
+    position:absolute;
+    top:-95px;
+    left:50%;
+    transform:translateX(-50%);
+    width:150px;
+    height:150px;
+    z-index:2;
+    filter:drop-shadow(0 10px 15px rgba(22,51,111,.35));
+  }
+
+  .footer-card{
+    position:relative;
+    background:var(--card-bg);
+    border-radius:60px 60px 28px 28px;
+    padding:70px 60px 30px;
+    box-shadow:0 30px 60px rgba(20,30,60,.25);
+  }
+
+  /* wavy top notch effect using pseudo curve under logo */
+  .footer-card::before{
+    content:"";
+    position:absolute;
+    top:-30px;
+    left:50%;
+    transform:translateX(-50%);
+    width:340px;
+    height:60px;
+    background:var(--card-bg);
+    border-radius:0 0 50% 50% / 0 0 100% 100%;
+    z-index:1;
+  }
+
+  .brand{
+    text-align:center;
+    margin-bottom:50px;
+    position:relative;
+    z-index:2;
+  }
+  .brand h1{
+    font-family:'Poppins', sans-serif;
+    font-weight:800;
+    font-size:52px;
+    letter-spacing:2px;
+    color:var(--navy);
+    margin:0;
+  }
+  .brand p{
+    font-family:'Poppins', sans-serif;
+    font-weight:600;
+    font-size:20px;
+    color:#7c8592;
+    margin:6px 0 0;
+    letter-spacing:1px;
+  }
+
+  .columns{
+    display:grid;
+    grid-template-columns: 1fr 1.3fr 1fr 1.4fr;
+    gap:20px;
+    padding-bottom:40px;
+  }
+
+  .col h3{
+    font-size:19px;
+    font-weight:700;
+    color:var(--navy);
+    margin:0 0 10px;
+    display:inline-block;
+    position:relative;
+    padding-bottom:12px;
+  }
+  .col h3::after{
+    content:"";
+    position:absolute;
+    bottom:0;
+    right:0;
+    width:36px;
+    height:3px;
+    background:var(--accent-line);
+    border-radius:2px;
+  }
+  .col.about h3::after{ right:auto; left:0; }
+
+  .col ul{
+    list-style:none;
+    margin:16px 0 0;
+    padding:0;
+  }
+  .col ul li{
+    margin-bottom:16px;
+    font-size:15px;
+    color:var(--text-dark);
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+
+  .icon-circle{
+    width:34px;
+    height:34px;
+    min-width:34px;
+    border-radius:50%;
+    background:#fff;
+    box-shadow:0 2px 6px rgba(0,0,0,.08);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--navy);
+  }
+  .icon-circle svg{ width:17px; height:17px; }
+
+  .col.links ul li{
+    justify-content:space-between;
+    cursor:pointer;
+    font-weight:600;
+  }
+  .col.links ul li .chev{
+    color:var(--navy);
+    font-size:13px;
+  }
+
+  .col.about p{
+    font-size:14.5px;
+    line-height:1.9;
+    color:var(--text-muted);
+    margin:16px 0 0;
+    text-align:right;
+  }
+
+  .cta-row{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    padding:10px 0 36px;
+  }
+  .btn{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 30px;
+    border-radius:40px;
+    font-family:'Cairo';
+    font-size:15px;
+    font-weight:700;
+    border:none;
+    cursor:pointer;
+  }
+  .btn-outline{
+    background:#fff;
+    color:var(--navy);
+    border:1.5px solid #e3e6eb;
+  }
+  .btn-solid{
+    background:var(--navy);
+    color:#fff;
+  }
+  .btn svg{ width:17px; height:17px; }
+
+  .bottom-bar{
+    border-top:1px solid #e3e6eb;
+    padding-top:22px;
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    font-size:13.5px;
+    color:var(--text-muted);
+    flex-wrap:wrap;
+  }
+  .bottom-bar span{ opacity:.55; }
+
+  @media (max-width:900px){
+    .columns{ grid-template-columns: 1fr 1fr; }
+    .footer-card{ padding:70px 28px 24px; }
+    .compass{ width:100px; top:-65px; }
+    .brand h1{ font-size:36px; }
+  }
+  @media (max-width:560px){
+    .columns{ grid-template-columns: 1fr; text-align:center; }
+    .col h3::after, .col.about h3::after{ right:50%; left:auto; transform:translateX(50%); }
+    .col ul li{ justify-content:center; }
+    .col.about p{ text-align:center; }
+    .cta-row{ flex-direction:column; align-items:center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="footer-wrap">
+
+  <!-- Compass logo -->
+  <svg class="compass" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#1c4494"/>
+        <stop offset="100%" stop-color="#0e2352"/>
+      </linearGradient>
+      <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#7fa3e0"/>
+        <stop offset="100%" stop-color="#1c4494"/>
+      </linearGradient>
+    </defs>
+    <!-- main N-S-E-W points -->
+    <polygon points="100,10 112,100 100,90 88,100" fill="url(#g1)"/>
+    <polygon points="100,190 112,100 100,110 88,100" fill="url(#g1)"/>
+    <polygon points="10,100 100,88 90,100 100,112" fill="url(#g1)"/>
+    <polygon points="190,100 100,88 110,100 100,112" fill="url(#g2)"/>
+    <!-- diagonal points -->
+    <polygon points="45,45 100,100 95,80 80,95" fill="#7fa3e0"/>
+    <polygon points="155,155 100,100 105,120 120,105" fill="url(#g1)"/>
+    <polygon points="155,45 100,100 120,95 105,80" fill="url(#g2)"/>
+    <polygon points="45,155 100,100 80,105 95,120" fill="#123268"/>
+    <circle cx="100" cy="100" r="18" fill="#e9edf5"/>
+    <circle cx="100" cy="100" r="18" fill="none" stroke="#1c4494" stroke-width="2"/>
+  </svg>
+
+  <div class="footer-card">
+
+    <div class="brand">
+      <h1>ELSHAMS</h1>
+      <p>Freight &amp; Logistics</p>
+    </div>
+
+    <div class="columns">
+
+      <!-- تابعنا -->
+      <div class="col">
+        <h3>تابعنا</h3>
+        <ul>
+          <li>
+            <span class="icon-circle">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.66 4.78 6.12V23h-4v-6.72c0-1.6-.03-3.66-2.23-3.66-2.23 0-2.57 1.74-2.57 3.55V23h-4V8z"/></svg>
+            </span>
+            LinkedIn
+          </li>
+          <li>
+            <span class="icon-circle">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.9.53 3.68 1.45 5.2L2 22l4.94-1.4A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.24.68-1.37 1.3-1.9 1.38-.5.08-1.13.11-1.83-.11-.42-.13-.96-.3-1.66-.6-2.92-1.26-4.83-4.2-4.98-4.4-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.6-.37.8-.37.2 0 .4 0 .58.01.19.01.44-.07.68.52.24.6.83 2.06.9 2.21.07.15.12.33.02.53-.1.2-.15.33-.3.5-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.35 1.46.3.15.47.13.65-.08.18-.2.76-.89.96-1.19.2-.3.4-.25.68-.15.28.1 1.76.83 2.06.98.3.15.5.23.57.36.08.13.08.75-.16 1.43z"/></svg>
+            </span>
+            WhatsApp
+          </li>
+          <li>
+            <span class="icon-circle">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg>
+            </span>
+            Facebook
+          </li>
+        </ul>
+      </div>
+
+      <!-- تواصل معنا -->
+      <div class="col">
+        <h3>تواصل معنا</h3>
+        <ul>
+          <li>
+            <span class="icon-circle">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7.6 2 4 5.6 4 10c0 5.5 8 12 8 12s8-6.5 8-12c0-4.4-3.6-8-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+            </span>
+            العاشر من رمضان - الشرقية
+          </li>
+          <li>
+            <span class="icon-circle">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15 3l-6 2.2L3 3v16l6 2.2 6-2.2 6 2.2V5l-6-2zM9 5.9l6 2.1v14l-6-2.1V5.9z"/></svg>
+            </span>
+            منطقة الأردنية - سوق الجملة
+          </li>
+          <li>
+            <span class="icon-circle">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h16v18H4V3zm2 3v2h12V6H6zm0 4v2h12v-2H6zm0 4v2h8v-2H6z"/></svg>
+            </span>
+            المرحلة الرابعة - مكتب 16
+          </li>
+          <li>
+            <span class="icon-circle">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+            </span>
+            0123 456 7890
+          </li>
+          <li>
+            <span class="icon-circle">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20v16H2V4zm2 2v.5l8 5.5 8-5.5V6H4zm16 3.1-7.4 5.1a1 1 0 0 1-1.2 0L4 9.1V18h16V9.1z"/></svg>
+            </span>
+            info@alshams-transport.com
+          </li>
+        </ul>
+      </div>
+
+      <!-- الشركة -->
+      <div class="col links">
+        <h3>الشركة</h3>
+        <ul>
+          <li>من نحن <span class="chev">‹</span></li>
+          <li>خدماتنا <span class="chev">‹</span></li>
+          <li>الأسطول <span class="chev">‹</span></li>
+          <li>الأخبار <span class="chev">‹</span></li>
+          <li>تواصل معنا <span class="chev">‹</span></li>
+        </ul>
+      </div>
+
+      <!-- عن الشركة -->
+      <div class="col about">
+        <h3>عن الشركة</h3>
+        <p>
+          شركة رائدة في حلول النقل والخدمات اللوجستية منذ عام 2002. نقدم خدمات متكاملة داخل مصر وخارجها بأعلى معايير الجودة والأمان.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="cta-row">
+      <button class="btn btn-outline">
+        تواصل معنا
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+      </button>
+      <button class="btn btn-solid">
+        اطلب عرض سعر
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 6h13l3 4h2v7h-2a2.5 2.5 0 0 1-5 0H9a2.5 2.5 0 0 1-5 0H3V6zm2 2v7h.6a2.5 2.5 0 0 1 4.8 0h4.2a2.5 2.5 0 0 1 4.8 0H20v-3h-2.6L15 9H5V8z"/></svg>
+      </button>
+    </div>
+
+    <div class="bottom-bar">
+      <a href="#" style="color:inherit;text-decoration:none;">2026 © شركة الشمس للنقل. جميع الحقوق محفوظة.</a>
+      <span>|</span>
+      <a href="#" style="color:inherit;text-decoration:none;">سياسة الخصوصية</a>
+      <span>|</span>
+      <a href="#" style="color:inherit;text-decoration:none;">الشروط والأحكام</a>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

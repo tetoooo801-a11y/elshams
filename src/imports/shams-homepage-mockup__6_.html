@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>شركة الشمس للنقل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Arabic:wght@400;600;700;900&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E2233;
+    --ink-soft:#173C52;
+    --ink-softer:#20495F;
+    --sun:#E7A73C;
+    --sun-deep:#C9862A;
+    --sand:#F4EFE4;
+    --paper:#FBF8F3;
+    --steel:#5C6773;
+    --text:#1B2A35;
+    --text-soft:#4B5A64;
+    --line:#E3DBC9;
+    --radius-lg:32px;
+    --radius-md:22px;
+    --radius-sm:14px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'IBM Plex Sans Arabic', sans-serif;
+    background:var(--sand);
+    color:var(--text);
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Noto Serif Arabic', serif;
+    color:var(--ink);
+    line-height:1.25;
+  }
+  .mono{font-family:'IBM Plex Mono', monospace; direction:ltr; display:inline-block;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1240px; margin:0 auto; padding:0 32px;}
+  .eyebrow{
+    font-size:13px; font-weight:600; letter-spacing:.06em;
+    color:var(--sun-deep); display:flex; align-items:center; gap:10px;
+    margin-bottom:16px; text-transform:uppercase;
+  }
+  .eyebrow::before{content:""; width:26px; height:2px; background:var(--sun); border-radius:2px;}
+
+  /* ===== HEADER ===== */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(244,239,228,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 32px; max-width:1240px; margin:0 auto;}
+  .logo{display:flex; align-items:center; gap:10px; font-family:'Noto Serif Arabic',serif; font-weight:700; font-size:21px; color:var(--ink);}
+  .logo-mark{
+    width:38px; height:38px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, var(--sun), var(--sun-deep));
+    position:relative; flex-shrink:0;
+  }
+  .nav-links{display:flex; gap:34px; font-size:15px; font-weight:500; color:var(--text-soft);}
+  .nav-links a{position:relative; padding:6px 0;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-actions{display:flex; align-items:center; gap:12px;}
+  .btn{
+    padding:12px 26px; border-radius:100px; font-size:14px; font-weight:600;
+    display:inline-flex; align-items:center; gap:8px; border:1.5px solid transparent;
+    transition:.25s;
+  }
+  .btn-primary{background:var(--ink); color:var(--sand);}
+  .btn-primary:hover{background:var(--ink-soft);}
+  .btn-ghost{border-color:var(--line); color:var(--text);}
+  .btn-ghost:hover{border-color:var(--sun-deep); color:var(--sun-deep);}
+  .btn-track{font-size:13px; color:var(--steel); border-color:var(--line); padding:10px 20px;}
+
+  /* ===== HERO ===== */
+  .hero{position:relative; padding:28px 32px 0;}
+  .hero-frame{
+    position:relative; border-radius:var(--radius-lg); overflow:hidden;
+    min-height:640px; display:flex; align-items:flex-end;
+    box-shadow:0 40px 70px -30px rgba(14,34,51,.5);
+  }
+  .hero-frame img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+  .hero-frame::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(0deg, rgba(11,25,38,.92) 0%, rgba(11,25,38,.55) 42%, rgba(11,25,38,.15) 68%, rgba(11,25,38,.35) 100%);
+  }
+  .hero-inner{position:relative; z-index:2; padding:52px 52px 90px; width:100%; text-align:center; display:flex; flex-direction:column; align-items:center;}
+  .hero-top-row{display:flex; justify-content:center; align-items:flex-start; margin-bottom:auto; width:100%;}
+  .hero-badge{
+    background:rgba(244,239,228,.14); backdrop-filter:blur(6px);
+    border:1px solid rgba(244,239,228,.25); border-radius:100px;
+    padding:9px 18px; font-size:13px; color:#F4EFE4; display:flex; align-items:center; gap:8px;
+    animation:floatY 4.5s ease-in-out infinite;
+  }
+  .hero-badge .dot{width:7px; height:7px; border-radius:50%; background:var(--sun);}
+  .hero h1{font-size:60px; font-weight:700; color:#fff; margin-bottom:22px; max-width:760px; margin-inline:auto;}
+  .hero h1 em{font-style:normal; color:var(--sun);}
+  .hero p{font-size:18px; color:#DCE4E8; max-width:520px; margin:0 auto 34px;}
+  .hero-ctas{display:flex; gap:16px; margin-bottom:0; justify-content:center;}
+  .hero-ctas .btn{padding:15px 32px; font-size:15.5px;}
+
+  @keyframes floatY{0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);}}
+
+  .hero-float{
+    position:relative; z-index:2; margin:-40px 52px 0; 
+    background:var(--paper); border-radius:var(--radius-md);
+    box-shadow:0 24px 48px -20px rgba(14,34,51,.28);
+    display:flex; padding:8px;
+  }
+  .float-stat{flex:1; padding:22px 26px; text-align:center; position:relative;}
+  .float-stat:not(:last-child)::after{content:""; position:absolute; top:20%; bottom:20%; left:0; width:1px; background:var(--line);}
+  .float-stat b{display:block; font-family:'IBM Plex Mono',monospace; font-size:24px; color:var(--ink); direction:ltr;}
+  .float-stat span{font-size:12.5px; color:var(--text-soft);}
+  .hero-spacer{height:64px;}
+
+  /* ===== TYPOGRAPHIC BG ===== */
+  .type-bg{
+    position:absolute; top:-30px; right:-10px; z-index:0;
+    font-family:'Noto Serif Arabic',serif; font-weight:900;
+    font-size:200px; line-height:1; color:var(--ink); opacity:.06;
+    white-space:nowrap; pointer-events:none; user-select:none;
+  }
+
+  /* ===== MODE STRIP ===== */
+  .mode-strip{padding:56px 0 0;}
+  .mode-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .mode-item{
+    display:flex; align-items:center; gap:16px; background:var(--paper);
+    border:1px solid var(--line); border-radius:var(--radius-md); padding:24px 26px;
+    transition:transform .3s ease, border-color .3s ease;
+  }
+  .mode-item:hover{transform:translateY(-5px); border-color:var(--sun-deep);}
+  .mode-icon{
+    width:52px; height:52px; border-radius:50%; background:var(--ink);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .mode-item h4{font-family:'Noto Serif Arabic',serif; font-size:17px; color:var(--ink); margin-bottom:3px;}
+  .mode-item p{font-size:13px; color:var(--text-soft);}
+
+  /* ===== STAT BADGE ===== */
+  .about-visual-wrap{position:relative;}
+  .stat-badge{
+    position:absolute; bottom:-22px; left:-22px; z-index:3;
+    width:128px; height:128px; border-radius:50%;
+    background:var(--sun); color:var(--ink); display:flex; flex-direction:column;
+    align-items:center; justify-content:center; text-align:center;
+    box-shadow:0 22px 40px -14px rgba(201,134,42,.55);
+    border:6px solid var(--sand);
+    animation:floatY 5.5s ease-in-out infinite;
+  }
+  .stat-badge b{font-family:'IBM Plex Mono',monospace; font-size:28px; line-height:1; direction:ltr;}
+  .stat-badge span{font-size:10.5px; margin-top:5px; max-width:80px; line-height:1.3;}
+
+  /* ===== MARQUEE ===== */
+  .marquee-strip{background:var(--ink); padding:24px 0; overflow:hidden; white-space:nowrap; position:relative;}
+  .marquee-track{display:inline-flex; gap:44px; animation:scroll-marquee 26s linear infinite;}
+  .marquee-track span{
+    font-family:'Noto Serif Arabic',serif; font-weight:700; font-size:22px;
+    color:var(--sand); display:inline-flex; align-items:center; gap:18px;
+  }
+  .marquee-track span::after{content:""; width:8px; height:8px; border-radius:50%; background:var(--sun); display:inline-block;}
+  @keyframes scroll-marquee{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* ===== TRUST STRIP ===== */
+  .trust{background:var(--ink); padding:26px 0;}
+  .trust .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px;}
+  .trust span{color:#B9C7D0; font-size:14px; display:flex; align-items:center; gap:10px;}
+  .trust span b{color:var(--sun); font-family:'IBM Plex Mono',monospace; font-size:16px;}
+
+  /* ===== SECTION SHELL ===== */
+  section{padding:110px 0;}
+  .section-head{max-width:640px; margin:0 auto 56px; text-align:center;}
+  .section-head h2{font-size:38px; font-weight:700;}
+  .section-head p{color:var(--text-soft); margin-top:14px; font-size:16px;}
+  .section-head .eyebrow{justify-content:center;}
+
+  /* ===== REVEAL / MOTION ===== */
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in-view{opacity:1; transform:translateY(0);}
+  .reveal-stagger > *{opacity:0; transform:translateY(24px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal-stagger.in-view > *{opacity:1; transform:translateY(0);}
+  .reveal-stagger.in-view > *:nth-child(1){transition-delay:.05s;}
+  .reveal-stagger.in-view > *:nth-child(2){transition-delay:.15s;}
+  .reveal-stagger.in-view > *:nth-child(3){transition-delay:.25s;}
+  .reveal-stagger.in-view > *:nth-child(4){transition-delay:.35s;}
+  .reveal-stagger.in-view > *:nth-child(5){transition-delay:.45s;}
+  .reveal-stagger.in-view > *:nth-child(6){transition-delay:.55s;}
+
+  /* ===== ABOUT ===== */
+  .about .wrap{display:grid; grid-template-columns:.85fr 1.15fr; gap:64px; align-items:center;}
+  .about-visual{
+    aspect-ratio:4/5; border-radius:var(--radius-lg);
+    position:relative; overflow:hidden; border:1px solid var(--line);
+    transition:transform .4s ease;
+  }
+  .about-visual-wrap:hover .about-visual{transform:translateY(-6px);}
+  .about-visual img{width:100%; height:100%; object-fit:cover;}
+  .about-body{text-align:center;}
+  .about-body .eyebrow{justify-content:center;}
+  .about-body p{color:var(--text-soft); margin-bottom:18px; font-size:16px;}
+  .pillbox{display:flex; gap:14px; margin-top:28px; flex-wrap:wrap; justify-content:center;}
+  .pill{background:var(--paper); border:1px solid var(--line); border-radius:100px; padding:10px 18px; font-size:13px; font-weight:500; color:var(--ink); transition:.25s;}
+  .pill:hover{border-color:var(--sun-deep); transform:translateY(-3px);}
+
+  /* ===== SERVICES ===== */
+  .services{background:var(--paper);}
+  .service-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .service-card{
+    background:var(--sand); border:1px solid var(--line); border-radius:var(--radius-md);
+    padding:32px 28px; transition:.25s;
+  }
+  .service-card:hover{border-color:var(--sun-deep); transform:translateY(-4px);}
+  .service-icon{
+    width:52px; height:52px; border-radius:16px; background:var(--ink);
+    display:flex; align-items:center; justify-content:center; margin-bottom:22px;
+  }
+  .service-card h3{font-size:19px; margin-bottom:10px;}
+  .service-card p{font-size:14.5px; color:var(--text-soft);}
+
+  /* ===== FLEET ===== */
+  .fleet-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  .fleet-item{
+    border-radius:var(--radius-md); overflow:hidden; position:relative;
+    aspect-ratio:3/4; transition:transform .35s ease;
+  }
+  .fleet-item:hover{transform:translateY(-6px);}
+  .fleet-item img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
+  .fleet-item:hover img{transform:scale(1.06);}
+  .fleet-label{
+    position:absolute; bottom:0; right:0; left:0; padding:20px 18px;
+    background:linear-gradient(0deg, rgba(14,34,51,.92), transparent);
+    color:#fff; font-size:15px; font-weight:600;
+  }
+
+  /* ===== SECTORS ===== */
+  .sectors{background:var(--ink);}
+  .sectors .section-head h2, .sectors .section-head p{color:#EFE7D4;}
+  .sectors .section-head p{color:#9FB2BE;}
+  .sector-row{display:flex; gap:16px; flex-wrap:wrap; justify-content:center;}
+  .sector-chip{
+    display:flex; align-items:center; gap:10px; padding:14px 22px;
+    background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12);
+    border-radius:100px; color:#E9EEF1; font-size:14.5px; transition:.3s;
+  }
+  .sector-chip:hover{transform:translateY(-4px); border-color:var(--sun); background:rgba(255,255,255,.09);}
+  .sector-chip .dot{width:8px; height:8px; border-radius:50%; background:var(--sun);}
+
+  /* ===== CLIENTS ===== */
+  .clients-row{display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:44px; padding:20px 0;}
+  .client-name{font-family:'Noto Serif Arabic',serif; font-size:22px; font-weight:700; color:var(--steel); opacity:.7; transition:.3s;}
+  .client-name:hover{opacity:1; color:var(--ink);}
+
+  /* ===== CTA ===== */
+  .cta-banner{
+    background:linear-gradient(135deg, var(--sun) 0%, var(--sun-deep) 100%);
+    border-radius:var(--radius-lg);
+    padding:64px 60px; display:flex; justify-content:space-between; align-items:center; gap:40px;
+    margin:0 32px;
+  }
+  .cta-banner h2{color:var(--ink); font-size:32px; max-width:460px;}
+  .cta-banner .btn-primary{background:var(--ink); color:var(--sand);}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--ink); color:#B9C7D0; padding:70px 0 30px; margin-top:110px;}
+  .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; padding-bottom:50px; border-bottom:1px solid rgba(255,255,255,.1);}
+  .footer-grid h4{color:#fff; font-size:15px; margin-bottom:18px; font-weight:600;}
+  .footer-grid a{display:block; color:#9FB2BE; font-size:14px; margin-bottom:12px;}
+  .footer-bottom{display:flex; justify-content:space-between; padding-top:26px; font-size:13px; color:#7A8B96;}
+
+  @media (max-width:980px){
+    .hero .wrap, .about .wrap{grid-template-columns:1fr;}
+    .service-grid{grid-template-columns:repeat(2,1fr);}
+    .fleet-grid{grid-template-columns:repeat(2,1fr);}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .nav-links{display:none;}
+    .hero h1{font-size:36px;}
+    .cta-banner{flex-direction:column; text-align:center; margin:0 16px; padding:44px 28px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo"><span class="logo-mark"></span> الشمس للنقل</div>
+    <nav class="nav-links">
+      <a href="#">الرئيسية</a>
+      <a href="#">من نحن</a>
+      <a href="#">خدماتنا</a>
+      <a href="#">الأسطول</a>
+      <a href="#">الأخبار</a>
+      <a href="#">تواصل معنا</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#" class="btn btn-track">تتبع الشحنة</a>
+      <a href="#" class="btn btn-primary">اطلب عرض سعر</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" style="position:relative; overflow:visible;">
+  <span class="type-bg">الشمس</span>
+  <div class="hero-frame">
+    <img src="https://images.pexels.com/photos/1554646/pexels-photo-1554646.jpeg?auto=compress&cs=tinysrgb&w=1800" alt="ميناء حاويات">
+    <div class="hero-inner">
+      <div class="hero-top-row">
+        <div class="hero-badge"><span class="dot"></span> شريكك الموثوق منذ 2002</div>
+      </div>
+      <h1 style="margin-top:60px;">نُحرّك <em>بضاعتك</em><br>برًا وبحرًا وجوًا</h1>
+      <p>أكثر من 20 عامًا من الخبرة في خدمة المصانع والشركات الصناعية، بأسطول متكامل وتغطية تمتد من العاشر من رمضان إلى دول الخليج والعالم العربي.</p>
+      <div class="hero-ctas">
+        <a href="#" class="btn btn-primary">اطلب عرض سعر</a>
+        <a href="#" class="btn btn-ghost" style="background:rgba(244,239,228,.1); border-color:rgba(244,239,228,.35); color:#F4EFE4;">تعرف على خدماتنا</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="hero-float reveal">
+      <div class="float-stat"><b class="mono">20+</b><span>سنة خبرة</span></div>
+      <div class="float-stat"><b class="mono">03</b><span>أنواع شحن متكاملة</span></div>
+      <div class="float-stat"><b class="mono">06+</b><span>دول تغطية إقليمية</span></div>
+      <div class="float-stat"><b class="mono">24/7</b><span>دعم ومتابعة</span></div>
+    </div>
+  </div>
+  <div class="hero-spacer"></div>
+</section>
+
+<section class="mode-strip">
+  <div class="wrap">
+    <div class="mode-grid reveal-stagger">
+      <div class="mode-item">
+        <div class="mode-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E7A73C" stroke-width="1.8"><rect x="2" y="8" width="12" height="9" rx="1.5"/><path d="M14 11h4l3 3v3h-7z"/><circle cx="6" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/></svg></div>
+        <div><h4>نقل بري</h4><p>تغطية داخل مصر والدول العربية</p></div>
+      </div>
+      <div class="mode-item">
+        <div class="mode-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E7A73C" stroke-width="1.8"><path d="M3 17h18l-2 3H5z"/><path d="M5 17V9l7-4 7 4v8"/></svg></div>
+        <div><h4>شحن بحري</h4><p>حاويات 20 و40 قدم لكل الموانئ</p></div>
+      </div>
+      <div class="mode-item">
+        <div class="mode-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E7A73C" stroke-width="1.8"><path d="M2 16l7-2 5-9 2 1-3 8 6-1 2 2-16 5z"/></svg></div>
+        <div><h4>شحن جوي</h4><p>سرعة تسليم حسب أولوية الشحنة</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="wrap">
+    <span><b>ISO</b> معايير جودة وسلامة معتمدة</span>
+    <span><b>24/7</b> متابعة ودعم مستمر</span>
+    <span><b>+20</b> عامًا في خدمة الصناعة المصرية</span>
+    <span><b>EG · GCC</b> تغطية محلية وإقليمية</span>
+  </div>
+</div>
+
+<section class="about">
+  <div class="wrap">
+    <div class="about-visual-wrap reveal">
+      <div class="about-visual">
+        <img src="https://images.pexels.com/photos/30517083/pexels-photo-30517083.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="حاويات وأوناش في الميناء">
+      </div>
+      <div class="stat-badge"><b class="mono">20+</b><span>سنة خبرة في خدمة الصناعة</span></div>
+    </div>
+    <div class="about-body reveal">
+      <div class="eyebrow">من نحن</div>
+      <h2 style="font-size:34px; margin-bottom:20px;">شراكة صناعية ممتدة منذ العاشر من رمضان</h2>
+      <p>تأسست شركة الشمس للنقل عام 2002 في قلب المنطقة الصناعية بمدينة العاشر من رمضان، لتصبح على مدار أكثر من عقدين شريكًا موثوقًا للمصانع والشركات التجارية داخل مصر وخارجها.</p>
+      <p>نجمع بين السرعة والالتزام والأمان، مع أسطول متنوع وحلول نقل مرنة تناسب كل نوع من أنواع البضائع.</p>
+      <div class="pillbox">
+        <span class="pill">تأسست 2002</span>
+        <span class="pill">العاشر من رمضان</span>
+        <span class="pill">نقل بري وبحري وجوي</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">خدماتنا</div>
+      <h2>حلول نقل متكاملة تحت سقف واحد</h2>
+      <p>من الطريق إلى الميناء إلى المطار، نوفر منظومة نقل وخدمات لوجستية تغطي كل مراحل رحلة بضاعتك.</p>
+    </div>
+    <div class="service-grid reveal-stagger">
+      <div class="service-card"><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E7A73C" stroke-width="1.8"><rect x="2" y="8" width="12" height="9" rx="1.5"/><path d="M14 11h4l3 3v3h-7z"/><circle cx="6" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/></svg></div><h3>النقل البري الدولي</h3><p>تغطية شاملة داخل مصر وخارجها بأسطول شاحنات متنوع يلبي كل أنواع الحمولات.</p></div>
+      <div class="service-card"><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E7A73C" stroke-width="1.8"><path d="M3 17h18l-2 3H5z"/><path d="M5 17V9l7-4 7 4v8"/><path d="M9 9h6v4H9z"/></svg></div><h3>الشحن البحري</h3><p>حاويات 20 و40 قدم بجاهزية كاملة للشحن الدولي عبر أهم الموانئ.</p></div>
+      <div class="service-card"><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E7A73C" stroke-width="1.8"><path d="M2 16l7-2 5-9 2 1-3 8 6-1 2 2-16 5z"/></svg></div><h3>الشحن الجوي</h3><p>حلول شحن جوي سريعة تناسب طبيعة وكمية الشحنة وأولوية التسليم.</p></div>
+      <div class="service-card"><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E7A73C" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg></div><h3>الوساطة اللوجستية</h3><p>Freight Forwarding باحترافية تربط بين مختلف وسائل النقل بسلاسة.</p></div>
+      <div class="service-card"><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E7A73C" stroke-width="1.8"><path d="M3 12h18M3 6h18M3 18h18"/></svg></div><h3>إدارة سلاسل الإمداد</h3><p>إدارة كاملة لعمليات النقل تضمن كفاءة تشغيلية والتزامًا بالمواعيد.</p></div>
+      <div class="service-card"><div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E7A73C" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16"/></svg></div><h3>نقل المواد والمنتجات</h3><p>نقل آمن للمواد الخام والمنتجات النهائية بمعايير سلامة صارمة.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="fleet">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">الأسطول</div>
+      <h2>أسطول مجهز لكل نوع حمولة</h2>
+    </div>
+    <div class="fleet-grid reveal-stagger">
+      <div class="fleet-item"><img src="https://images.pexels.com/photos/14005602/pexels-photo-14005602.jpeg?auto=compress&cs=tinysrgb&w=700" alt="شاحنة حاويات"><div class="fleet-label">حاويات جافة</div></div>
+      <div class="fleet-item"><img src="https://images.pexels.com/photos/6595779/pexels-photo-6595779.jpeg?auto=compress&cs=tinysrgb&w=700" alt="حاويات في الميناء"><div class="fleet-label">حاويات مبردة</div></div>
+      <div class="fleet-item"><img src="https://images.pexels.com/photos/13520550/pexels-photo-13520550.jpeg?auto=compress&cs=tinysrgb&w=700" alt="شاحنة على الطريق"><div class="fleet-label">سيارات فلات بيد</div></div>
+      <div class="fleet-item"><img src="https://images.pexels.com/photos/30517083/pexels-photo-30517083.jpeg?auto=compress&cs=tinysrgb&w=700" alt="أوناش الميناء"><div class="fleet-label">دبابات النقل</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sectors">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">القطاعات التي نخدمها</div>
+      <h2>ثقة صناعات متنوعة</h2>
+      <p>نخدم قطاعات حساسة تتطلب دقة والتزامًا في كل عملية نقل.</p>
+    </div>
+    <div class="sector-row reveal-stagger">
+      <span class="sector-chip"><span class="dot"></span> الصناعات الغذائية</span>
+      <span class="sector-chip"><span class="dot"></span> الصناعات الدوائية</span>
+      <span class="sector-chip"><span class="dot"></span> الصناعات الهندسية</span>
+      <span class="sector-chip"><span class="dot"></span> الصناعات الكيماوية</span>
+      <span class="sector-chip"><span class="dot"></span> الاستيراد والتصدير</span>
+      <span class="sector-chip"><span class="dot"></span> التوزيع واللوجستيات</span>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span>الشمس للنقل</span><span>نقل بري</span><span>شحن بحري</span><span>شحن جوي</span><span>خدمات لوجستية</span>
+    <span>الشمس للنقل</span><span>نقل بري</span><span>شحن بحري</span><span>شحن جوي</span><span>خدمات لوجستية</span>
+  </div>
+</div>
+
+<section class="clients reveal" style="padding-top:80px; padding-bottom:60px; text-align:center;">
+  <div class="wrap">
+    <div class="eyebrow" style="justify-content:center;">عملاؤنا</div>
+    <div class="clients-row">
+      <span class="client-name">EIPICO</span>
+      <span class="client-name">Farm Frites</span>
+      <span class="client-name">Americana</span>
+      <span class="client-name">ICAPP</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="cta-banner reveal">
+    <h2>جاهز تنقل بضاعتك معانا؟</h2>
+    <a href="#" class="btn btn-primary">اطلب عرض سعر الآن</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="color:#fff;"><span class="logo-mark"></span> الشمس للنقل</div>
+        <p style="color:#9FB2BE; font-size:14px; margin-top:16px; max-width:280px;">شريكك الموثوق في حلول النقل والخدمات اللوجستية منذ عام 2002.</p>
+      </div>
+      <div><h4>الشركة</h4><a href="#">من نحن</a><a href="#">خدماتنا</a><a href="#">الأسطول</a><a href="#">الأخبار</a></div>
+      <div><h4>تواصل</h4><a href="#">العاشر من رمضان – الشرقية</a><a href="#">منطقة الأردنية – سوق الجملة</a></div>
+      <div><h4>تابعنا</h4><a href="#">LinkedIn</a><a href="#">WhatsApp</a></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 شركة الشمس للنقل. جميع الحقوق محفوظة.</span>
+      <span>تصميم وتطوير Merge</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.15, rootMargin:'0px 0px -60px 0px'});
+  revealEls.forEach(el=> io.observe(el));
+</script>
+
+</body>
+</html>
