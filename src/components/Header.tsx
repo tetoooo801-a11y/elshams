@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom"
 import { useLang } from "../context/LangContext"
 import { useEffect, useState } from "react"
-import logoUrl from "../imports/logo-10.svg"
+import logoUrl from "../imports/header-logo-full.png"
 import pillMarkUrl from "../imports/logo-11.svg"
 
 export default function Header() {
@@ -35,7 +35,7 @@ export default function Header() {
       </button>
       <div className="nav">
         <NavLink to="/" className="logo" aria-label={isAr ? "الشمس للنقل" : "Shams Transport"}>
-          <img className="logo-img" src={logoUrl} alt={isAr ? "الشمس للنقل" : "Shams Transport"} />
+          <img className="logo-img" src={logoUrl} alt={isAr ? "الشمس للنقل" : "Shams Transport"} style={{ height: 42, maxWidth: "100%", width: "auto", objectFit: "contain" }} />
         </NavLink>
         <nav className="nav-links">
           <NavLink to="/" end className={({ isActive }) => isActive ? "active" : ""}>{isAr ? "الرئيسية" : "Home"}</NavLink>
