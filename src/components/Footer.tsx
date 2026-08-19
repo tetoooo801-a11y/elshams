@@ -131,7 +131,7 @@ export default function Footer() {
           </div>
 
           {/* 4 columns */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr 1fr 1.4fr", gap: 20, paddingBottom: 24, direction: dir }}>
+          <div className="ft-cols-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr 1fr 1.4fr", gap: 20, paddingBottom: 24, direction: dir }}>
 
             {/* تابعنا */}
             <div>
@@ -179,7 +179,7 @@ export default function Footer() {
           </div>
 
           {/* CTA */}
-          <div style={{ display: "flex", justifyContent: "center", gap: 12, padding: "6px 0 20px", direction: dir }}>
+          <div className="ft-cta-btns" style={{ display: "flex", justifyContent: "center", gap: 12, padding: "6px 0 20px", direction: dir }}>
             <NavLink to="/contact" style={{
               display: "inline-flex", alignItems: "center", gap: 8,
               padding: "10px 20px", borderRadius: 40,

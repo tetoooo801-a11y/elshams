@@ -2355,3 +2355,433 @@ h3 { font-size: 21px; letter-spacing: -0.014em; line-height: 1.4; }
   padding: 4px 8px;
 }
 .site-header .nav .logo .logo-img { height: 42px; }
+
+/* ==========================================================================
+   MOBILE-ONLY RESPONSIVE SYSTEM (@media max-width: 768px & 480px)
+   DESKTOP (>768px) REMAINS 100% EXACTLY UNTOUCHED
+   ========================================================================== */
+
+.mobile-menu-btn,
+.mobile-drawer-overlay {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
+
+  .wrap {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* MOBILE HEADER & DRAWER NAVIGATION */
+  .site-header .nav {
+    padding: 12px 16px !important;
+    justify-content: space-between !important;
+  }
+
+  .site-header .nav-links {
+    display: none !important;
+  }
+
+  .site-header .nav-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  .mobile-menu-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 50% !important;
+    background: #ffffff !important;
+    color: var(--ink) !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
+    cursor: pointer !important;
+  }
+
+  .mobile-drawer-overlay {
+    display: block !important;
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 10000 !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+    animation: drawerFadeIn 0.25s ease-out forwards;
+  }
+
+  @keyframes drawerFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  .mobile-drawer {
+    position: absolute !important;
+    top: 12px !important;
+    left: 12px !important;
+    right: 12px !important;
+    max-height: calc(100vh - 24px) !important;
+    background: #ffffff !important;
+    border-radius: 24px !important;
+    padding: 20px 24px !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    overflow-y: auto !important;
+    animation: drawerSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes drawerSlideDown {
+    from { transform: translateY(-20px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+  }
+
+  .mobile-drawer-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding-bottom: 12px !important;
+    border-bottom: 1px solid #f0f2f5 !important;
+  }
+
+  .mobile-drawer-logo {
+    height: 36px !important;
+    width: auto !important;
+    object-fit: contain !important;
+  }
+
+  .mobile-drawer-close {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    background: #f4f6f9 !important;
+    border: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: var(--ink) !important;
+    cursor: pointer !important;
+  }
+
+  .mobile-drawer-nav {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+  }
+
+  .mobile-drawer-link {
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    padding: 12px 16px !important;
+    border-radius: 14px !important;
+    color: var(--ink) !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    transition: background 0.2s ease, color 0.2s ease !important;
+  }
+
+  .mobile-drawer-link.active,
+  .mobile-drawer-link:hover {
+    background: #f4f7ff !important;
+    color: var(--primary) !important;
+  }
+
+  .mobile-drawer-icon {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: var(--primary) !important;
+  }
+
+  .mobile-drawer-footer {
+    padding-top: 10px !important;
+  }
+
+  .mobile-drawer-cta {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    padding: 14px !important;
+    background: var(--primary) !important;
+    color: #fff !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    border-radius: 999px !important;
+    text-decoration: none !important;
+    box-shadow: 0 8px 20px -4px rgba(48, 83, 229, 0.4) !important;
+  }
+
+  /* SCROLL EXPAND HERO RESPONSIVE ON MOBILE */
+  .se-hero-root {
+    min-height: 520px !important;
+  }
+
+  .se-media {
+    max-width: 94vw !important;
+  }
+
+  .se-content {
+    padding: 24px 20px !important;
+  }
+
+  .se-title h2 {
+    font-size: clamp(24px, 7vw, 36px) !important;
+    padding: 0 16px !important;
+  }
+
+  .se-hint {
+    font-size: 12px !important;
+  }
+
+  .st-hero-content {
+    padding: 0 !important;
+  }
+
+  .st-hero-content h1 {
+    font-size: clamp(24px, 6.5vw, 34px) !important;
+    margin-bottom: 12px !important;
+    line-height: 1.35 !important;
+  }
+
+  .st-hero-content p {
+    font-size: 13.5px !important;
+    line-height: 1.65 !important;
+    margin-bottom: 20px !important;
+    max-width: 100% !important;
+  }
+
+  .st-btn-primary {
+    padding: 12px 24px !important;
+    font-size: 14px !important;
+  }
+
+  /* MOBILE CTA ROW */
+  .st-cta-row {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    margin: 20px auto 0 !important;
+    padding: 0 20px !important;
+  }
+
+  .st-cta-image {
+    height: 200px !important;
+  }
+
+  .st-cta-box {
+    height: auto !important;
+    padding: 24px 20px !important;
+  }
+
+  .st-cta-box p {
+    margin: 14px 0 20px !important;
+    font-size: 13.5px !important;
+  }
+
+  /* MOBILE STATISTICS (2 x 2 Grid requirement) */
+  .st-about-section {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .st-stats-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+    width: 100% !important;
+  }
+
+  .st-stats-grid .st-stat {
+    padding: 20px 14px !important;
+    text-align: center !important;
+  }
+
+  .st-stats-grid .st-stat:nth-child(4) { order: 1 !important; } /* 98+ */
+  .st-stats-grid .st-stat:nth-child(3) { order: 2 !important; } /* 06+ */
+  .st-stats-grid .st-stat:nth-child(2) { order: 3 !important; } /* 20+ */
+  .st-stats-grid .st-stat:nth-child(1) { order: 4 !important; } /* 500+ */
+
+  .st-stat-num {
+    font-size: 32px !important;
+  }
+
+  .st-stat-label {
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+  }
+
+  /* MOBILE INDUSTRIES TIMELINE (Single vertical column) */
+  .ind-section {
+    padding: 60px 0 40px !important;
+  }
+
+  .ind-section > div {
+    padding: 0 20px !important;
+  }
+
+  .ind-section div[style*="left: 50%"] {
+    left: 24px !important;
+    right: auto !important;
+    transform: none !important;
+  }
+
+  [dir="rtl"] .ind-section div[style*="left: 50%"] {
+    right: 24px !important;
+    left: auto !important;
+  }
+
+  .ind-section div[style*="display: flex"][style*="justify-content"] {
+    display: block !important;
+    margin-bottom: 24px !important;
+    padding-inline-start: 48px !important;
+    position: relative !important;
+  }
+
+  .ind-section div[style*="width: 42"][style*="border-radius: 50%"] {
+    left: 0 !important;
+    top: 0 !important;
+    transform: none !important;
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  [dir="rtl"] .ind-section div[style*="width: 42"][style*="border-radius: 50%"] {
+    right: 0 !important;
+    left: auto !important;
+  }
+
+  .ind-section div[style*="width: 42"] img {
+    width: 52px !important;
+    height: 52px !important;
+  }
+
+  .ind-section div[style*="width: 44%"] {
+    width: 100% !important;
+  }
+
+  /* MOBILE SERVICES, FLEET & CARDS */
+  .st-services-section,
+  .st-fleet-section {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .st-services-elastic {
+    flex-direction: column !important;
+    height: auto !important;
+    gap: 16px !important;
+  }
+
+  .st-elastic-card {
+    flex: none !important;
+    width: 100% !important;
+    height: 210px !important;
+  }
+
+  .st-elastic-content {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .st-elastic-overlay {
+    opacity: 0.75 !important;
+  }
+
+  .st-elastic-idle-num {
+    display: none !important;
+  }
+
+  .st-fleet-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .st-fleet-main {
+    min-height: 260px !important;
+  }
+
+  .st-fleet-side {
+    gap: 12px !important;
+  }
+
+  .st-final-cta {
+    padding: 36px 24px !important;
+    margin: 40px 20px !important;
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+
+  /* MOBILE FOOTER */
+  footer {
+    padding: 0 16px 20px !important;
+    margin-top: 24px !important;
+  }
+
+  .ft-card {
+    padding: 28px 18px 20px !important;
+    border-radius: 20px !important;
+  }
+
+  .ft-cols-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 24px 16px !important;
+    padding-bottom: 20px !important;
+  }
+
+  .ft-col-head {
+    font-size: 14px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .ft-col-head-about {
+    font-size: 14px !important;
+  }
+
+  .ft-cta-btns {
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  .ft-cta-btns a {
+    width: 100% !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .st-stats-grid {
+    gap: 10px !important;
+  }
+
+  .st-stat-num {
+    font-size: 28px !important;
+  }
+
+  .ft-cols-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    text-align: center !important;
+  }
+
+  .ft-cols-grid p {
+    text-align: center !important;
+  }
+
+  .ft-list {
+    align-items: center !important;
+  }
+}
+
