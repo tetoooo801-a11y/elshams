@@ -2844,7 +2844,6 @@ h3 { font-size: 21px; letter-spacing: -0.014em; line-height: 1.4; }
     border: 1.5px solid rgba(48, 83, 229, 0.15) !important;
   }
 }
-}
 
 @media (max-width: 480px) {
   .st-stats-grid {
