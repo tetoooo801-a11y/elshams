@@ -103,8 +103,10 @@ export default function ScrollExpandHero({
 
   const vw = typeof window !== "undefined" ? window.innerWidth : 1440
   const vh = typeof window !== "undefined" ? window.innerHeight : 900
-  const mediaWidth = 300 + progress * (vw - 300)
-  const mediaHeight = 400 + progress * (vh - 400)
+  const initialMediaW = isMobile ? vw : 300
+  const initialMediaH = isMobile ? Math.min(vh * 0.46, 380) : 400
+  const mediaWidth = initialMediaW + progress * (vw - initialMediaW)
+  const mediaHeight = initialMediaH + progress * (vh - initialMediaH)
   const textTranslateX = progress * (isMobile ? 180 : 150)
 
   return (
@@ -122,9 +124,9 @@ export default function ScrollExpandHero({
           style={{
             width: `${mediaWidth}px`,
             height: `${mediaHeight}px`,
-            maxWidth: progress >= 1 ? "100vw" : (isMobile ? "100vw" : "95vw"),
-            maxHeight: progress >= 1 ? "100vh" : "85vh",
-            borderRadius: `${20 * (1 - progress)}px`,
+            maxWidth: "100vw",
+            maxHeight: progress >= 1 ? "100vh" : (isMobile ? "100vh" : "85vh"),
+            borderRadius: `${(isMobile ? 0 : 20) * (1 - progress)}px`,
             boxShadow: progress >= 1 ? "none" : undefined,
           }}
         >
