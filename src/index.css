@@ -2639,63 +2639,123 @@ h3 { font-size: 21px; letter-spacing: -0.014em; line-height: 1.4; }
     line-height: 1.4 !important;
   }
 
-  /* MOBILE INDUSTRIES TIMELINE (CENTER LINE + ALTERNATING CARDS + ELSHAMS STAR LOGO) */
+  /* MOBILE INDUSTRIES TIMELINE — CLEAN & READABLE SINGLE SIDE TIMELINE WITH ELSHAMS STAR LOGO */
   .ind-section {
-    padding: 50px 0 30px !important;
+    padding: 40px 0 30px !important;
     overflow-x: hidden !important;
   }
 
   .ind-section > div {
-    padding: 0 10px !important;
+    padding: 0 16px !important;
   }
 
-  .ind-section div[style*="left: 50%"] {
-    left: 50% !important;
+  .ind-section .ind-eyebrow {
+    font-size: 13px !important;
+  }
+
+  .ind-section .ind-h2 {
+    font-size: 24px !important;
+    line-height: 1.3 !important;
+    margin-top: 8px !important;
+  }
+
+  .ind-section .ind-desc {
+    font-size: 13px !important;
+    margin-top: 10px !important;
+    padding: 0 8px !important;
+  }
+
+  /* Timeline container spacing below header */
+  .ind-section div[ref="lineRef"],
+  .ind-section div[style*="position: relative"] {
+    margin-top: 32px !important;
+  }
+
+  /* Vertical line on the right side in RTL, left in LTR */
+  [dir="rtl"] .ind-section div[style*="left: 50%"] {
+    right: 20px !important;
+    left: auto !important;
+    transform: none !important;
+  }
+
+  [dir="ltr"] .ind-section div[style*="left: 50%"] {
+    left: 20px !important;
     right: auto !important;
-    transform: translateX(-50%) !important;
+    transform: none !important;
   }
 
+  /* Timeline item block */
   .ind-section div[style*="display: flex"][style*="justify-content"] {
-    display: flex !important;
+    display: block !important;
     position: relative !important;
-    margin-bottom: 24px !important;
+    margin-bottom: 20px !important;
     width: 100% !important;
     padding-inline-start: 0 !important;
   }
 
-  .ind-section div[style*="width: 42"][style*="border-radius: 50%"] {
-    left: 50% !important;
-    right: auto !important;
-    top: 12px !important;
-    transform: translateX(-50%) !important;
-    width: 36px !important;
-    height: 36px !important;
+  /* Circular star node positioned on the line */
+  [dir="rtl"] .ind-section div[style*="width: 42"][style*="border-radius: 50%"] {
+    right: 1px !important;
+    left: auto !important;
+    top: 16px !important;
+    transform: none !important;
+    width: 38px !important;
+    height: 38px !important;
     border-radius: 50% !important;
-    background: rgba(255, 255, 255, 0.95) !important;
-    border: 1px solid rgba(0, 0, 0, 0.12) !important;
+    background: #ffffff !important;
+    border: 1.5px solid rgba(48, 83, 229, 0.2) !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     z-index: 10 !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  [dir="ltr"] .ind-section div[style*="width: 42"][style*="border-radius: 50%"] {
+    left: 1px !important;
+    right: auto !important;
+    top: 16px !important;
+    transform: none !important;
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 50% !important;
+    background: #ffffff !important;
+    border: 1.5px solid rgba(48, 83, 229, 0.2) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 10 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
   }
 
   .ind-section div[style*="width: 42"] img {
-    width: 48px !important;
-    height: 48px !important;
+    width: 44px !important;
+    height: 44px !important;
     object-fit: contain !important;
     display: block !important;
   }
 
-  .ind-section div[style*="width: 44%"] {
-    width: calc(50% - 22px) !important;
-    flex-shrink: 0 !important;
+  /* Full width card container offset from line */
+  [dir="rtl"] .ind-section div[style*="width: 44%"] {
+    width: calc(100% - 54px) !important;
+    margin-right: 54px !important;
+    margin-left: 0 !important;
   }
 
+  [dir="ltr"] .ind-section div[style*="width: 44%"] {
+    width: calc(100% - 54px) !important;
+    margin-left: 54px !important;
+    margin-right: 0 !important;
+  }
+
+  /* Card inner padding and typography */
   .ind-section div[style*="width: 44%"] > div {
-    padding: 14px 10px 16px !important;
-    border-radius: 14px !important;
-    gap: 4px !important;
+    padding: 18px 18px 20px !important;
+    border-radius: 16px !important;
+    gap: 8px !important;
+    background: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
   }
 
   /* MOBILE SERVICES, FLEET & CARDS */
