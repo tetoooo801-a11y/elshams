@@ -107,7 +107,7 @@ export default function Footer() {
     { icon: <IcoPin />,      ar: "العاشر من رمضان – الشرقية",   en: "10th of Ramadan – Sharqia" },
     { icon: <IcoMap />,      ar: "منطقة الأردنية – سوق الجملة", en: "Al-Ordonia – Wholesale Market" },
     { icon: <IcoBuilding />, ar: "المرحلة الرابعة – مكتب 16",   en: "Phase Four – Office 16" },
-    { icon: <IcoPhone />,    ar: "0123 456 7890",                en: "0123 456 7890" },
+    { icon: <IcoPhone />,    ar: "7890 456 0123",                en: "7890 456 0123" },
     { icon: <IcoMail />,     ar: "info@alshams-transport.com",   en: "info@alshams-transport.com" },
   ]
 
@@ -219,25 +219,25 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ── MOBILE VIEW (<=768px) — COMPACT, INSIDE SAME WHITE ROUNDED CARD CONTAINER ── */}
+        {/* ── MOBILE VIEW (<=768px) — COMPACT, MATCHING REFERENCE IMAGE EXACTLY ── */}
         <div className="ft-mobile-view" style={{ direction: dir }}>
           <div className="ft-card ft-mobile-card">
             {/* Logo */}
-            <div style={{ textAlign: "center", marginBottom: 16 }}>
-              <img src={footerLogoUrl} alt="ELSHAMS Freight & Logistics" style={{ height: 56, maxWidth: "80%", width: "auto", objectFit: "contain", display: "inline-block" }} />
+            <div style={{ textAlign: "center", marginBottom: 20 }}>
+              <img src={footerLogoUrl} alt="ELSHAMS Freight & Logistics" style={{ height: 64, maxWidth: "85%", width: "auto", objectFit: "contain", display: "inline-block" }} />
             </div>
 
-            {/* 2 sections: "تواصل معنا" and "تابعنا" */}
-            <div className="ft-mobile-cols" style={{ display: "grid", gridTemplateColumns: "1.3fr 1fr", gap: 16, paddingBottom: 14, direction: dir }}>
+            {/* 2 sections side-by-side: "تواصل معنا" and "تابعنا" */}
+            <div className="ft-mobile-cols" style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: 14, paddingBottom: 6, direction: dir }}>
               {/* تواصل معنا */}
               <div>
-                <h3 className="ft-col-head" style={{ fontSize: 13.5, fontWeight: 700, marginBottom: 8, color: "var(--ink)" }}>
+                <h3 className="ft-col-head" style={{ fontSize: 14.5, fontWeight: 700, marginBottom: 12, color: "#16336f" }}>
                   {isAr ? "تواصل معنا" : "Contact"}
                 </h3>
-                <ul className="ft-list ft-list-sm" style={{ display: "flex", flexDirection: "column", gap: 6, padding: 0, margin: 0, listStyle: "none" }}>
+                <ul className="ft-list ft-list-sm" style={{ display: "flex", flexDirection: "column", gap: 10, padding: 0, margin: 0, listStyle: "none" }}>
                   {contactItems.map((c, i) => (
-                    <li key={i} className="ft-text-item" style={{ fontSize: 11.5, color: "var(--ink)", display: "flex", alignItems: "center", gap: 6, lineHeight: 1.35 }}>
-                      <span style={{ color: "var(--primary)", display: "flex", alignItems: "center", flexShrink: 0 }}>{c.icon}</span>
+                    <li key={i} style={{ fontSize: 12, fontWeight: 500, color: "#2b3e6b", display: "flex", alignItems: "center", gap: 8, lineHeight: 1.35 }}>
+                      <span style={{ color: "#3053E5", display: "flex", alignItems: "center", flexShrink: 0 }}>{c.icon}</span>
                       <span>{isAr ? c.ar : c.en}</span>
                     </li>
                   ))}
@@ -246,13 +246,13 @@ export default function Footer() {
 
               {/* تابعنا */}
               <div>
-                <h3 className="ft-col-head" style={{ fontSize: 13.5, fontWeight: 700, marginBottom: 8, color: "var(--ink)" }}>
+                <h3 className="ft-col-head" style={{ fontSize: 14.5, fontWeight: 700, marginBottom: 12, color: "#16336f" }}>
                   {isAr ? "تابعنا" : "Follow Us"}
                 </h3>
-                <ul className="ft-list ft-list-sm" style={{ display: "flex", flexDirection: "column", gap: 8, padding: 0, margin: 0, listStyle: "none" }}>
+                <ul className="ft-list ft-list-sm" style={{ display: "flex", flexDirection: "column", gap: 12, padding: 0, margin: 0, listStyle: "none" }}>
                   {socialItems.map(s => (
-                    <li key={s.label} className="ft-text-item" style={{ fontSize: 11.5, color: "var(--ink)", display: "flex", alignItems: "center", gap: 6 }}>
-                      <span style={{ color: "var(--primary)", display: "flex", alignItems: "center", flexShrink: 0 }}>{s.icon}</span>
+                    <li key={s.label} style={{ fontSize: 12.5, fontWeight: 600, color: "#2b3e6b", display: "flex", alignItems: "center", gap: 8 }}>
+                      <span style={{ color: "#3053E5", display: "flex", alignItems: "center", flexShrink: 0 }}>{s.icon}</span>
                       <span>{s.label}</span>
                     </li>
                   ))}
@@ -260,42 +260,43 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* CTA Buttons */}
-            <div className="ft-cta-btns" style={{ display: "flex", gap: 10, padding: "4px 0 14px", direction: dir }}>
+            {/* Divider line 1 */}
+            <div style={{ height: 1, background: "#eaedf3", margin: "16px 0 14px" }} />
+
+            {/* CTA Buttons - Stacked Vertically as in Reference Image */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 10, direction: dir }}>
               <NavLink to="/contact" style={{
-                flex: 1, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 6,
-                padding: "9px 12px", borderRadius: 40,
-                background: "#fff", color: "var(--ink)",
-                border: "1.5px solid #e3e6eb", fontSize: 12.5, fontWeight: 700,
-                textDecoration: "none", boxSizing: "border-box",
+                display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
+                padding: "11px 16px", borderRadius: 40,
+                background: "#ffffff", color: "#3053E5",
+                border: "1.5px solid #3053E5", fontSize: 13.5, fontWeight: 700,
+                textDecoration: "none", boxSizing: "border-box", width: "100%"
               }}>
-                {isAr ? "تواصل معنا" : "Contact Us"}
-                <IcoPhone />
+                <span style={{ display: "flex", alignItems: "center" }}><IcoPhone /></span>
+                <span>{isAr ? "تواصل معنا" : "Contact Us"}</span>
               </NavLink>
               <NavLink to="/contact" style={{
-                flex: 1, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 6,
-                padding: "9px 12px", borderRadius: 40,
-                background: "var(--primary)", color: "#fff",
-                border: "none", fontSize: 12.5, fontWeight: 700,
-                textDecoration: "none", boxSizing: "border-box",
+                display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
+                padding: "11px 16px", borderRadius: 40,
+                background: "#3053E5", color: "#ffffff",
+                border: "none", fontSize: 13.5, fontWeight: 700,
+                textDecoration: "none", boxSizing: "border-box", width: "100%"
               }}>
-                {isAr ? "اطلب عرض سعر" : "Request a Quote"}
-                <IcoTruck />
+                <span>{isAr ? "اطلب عرض سعر" : "Request a Quote"}</span>
+                <span style={{ display: "flex", alignItems: "center" }}><IcoTruck /></span>
               </NavLink>
             </div>
 
-            {/* Bottom Bar */}
+            {/* Divider line 2 */}
+            <div style={{ height: 1, background: "#eaedf3", margin: "16px 0 14px" }} />
+
+            {/* Bottom Bar - Copyright & Privacy Policy */}
             <div style={{
-              borderTop: "1px solid #e3e6eb", paddingTop: 12,
               display: "flex", flexDirection: "column", alignItems: "center", gap: 6,
-              fontSize: 11.5, color: "var(--text-soft)", direction: dir, textAlign: "center",
+              fontSize: 12, color: "#6b7a99", direction: dir, textAlign: "center",
             }}>
-              <a>{isAr ? "© 2026 شركة الشمس للنقل. جميع الحقوق محفوظة." : "© 2026 Shams Transport. All rights reserved."}</a>
-              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <a style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>{isAr ? "سياسة الخصوصية" : "Privacy Policy"}</a>
-                <span style={{ opacity: 0.55 }}>|</span>
-                <a style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>{isAr ? "الشروط والأحكام" : "Terms & Conditions"}</a>
-              </div>
+              <div>{isAr ? "© 2026 شركة الشمس للنقل. جميع الحقوق محفوظة." : "© 2026 Shams Transport. All rights reserved."}</div>
+              <a style={{ color: "#6b7a99", textDecoration: "none", cursor: "pointer", fontWeight: 500 }}>{isAr ? "سياسة الخصوصية" : "Privacy Policy"}</a>
             </div>
           </div>
         </div>
@@ -304,3 +305,4 @@ export default function Footer() {
     </footer>
   )
 }
+
