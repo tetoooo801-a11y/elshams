@@ -121,103 +121,180 @@ export default function Footer() {
     <footer style={{ background: "transparent", padding: "0 32px 32px", marginTop: 40 }}>
       <div style={{ position: "relative", width: "100%", maxWidth: 1320, margin: "0 auto" }}>
 
-
-        {/* Card */}
-        <div className="ft-card">
-
-{/* Brand */}
-          <div style={{ textAlign: "center", marginBottom: 24, position: "relative", zIndex: 2 }}>
-            <img src={footerLogoUrl} alt="ELSHAMS Freight & Logistics" style={{ height: 80, maxWidth: "100%", width: "auto", objectFit: "contain", marginBottom: 0, display: "inline-block" }} />
-          </div>
-
-          {/* 4 columns */}
-          <div className="ft-cols-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr 1fr 1.4fr", gap: 20, paddingBottom: 24, direction: dir }}>
-
-            {/* تابعنا */}
-            <div>
-              <h3 className="ft-col-head">{isAr ? "تابعنا" : "Follow Us"}</h3>
-              <ul className="ft-list ft-list-sm">
-                {socialItems.map(s => (
-                  <li key={s.label} className="ft-text-item">{s.label}</li>
-                ))}
-              </ul>
+        {/* ── DESKTOP VIEW (>768px) — 100% UNTOUCHED ── */}
+        <div className="ft-desktop-view">
+          <div className="ft-card">
+            {/* Brand */}
+            <div style={{ textAlign: "center", marginBottom: 24, position: "relative", zIndex: 2 }}>
+              <img src={footerLogoUrl} alt="ELSHAMS Freight & Logistics" style={{ height: 80, maxWidth: "100%", width: "auto", objectFit: "contain", marginBottom: 0, display: "inline-block" }} />
             </div>
 
-            {/* تواصل معنا */}
-            <div>
-              <h3 className="ft-col-head">{isAr ? "تواصل معنا" : "Contact"}</h3>
-              <ul className="ft-list ft-list-sm">
-                {contactItems.map((c, i) => (
-                  <li key={i} className="ft-text-item">{isAr ? c.ar : c.en}</li>
-                ))}
-              </ul>
+            {/* 4 columns */}
+            <div className="ft-cols-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr 1fr 1.4fr", gap: 20, paddingBottom: 24, direction: dir }}>
+
+              {/* تابعنا */}
+              <div>
+                <h3 className="ft-col-head">{isAr ? "تابعنا" : "Follow Us"}</h3>
+                <ul className="ft-list ft-list-sm">
+                  {socialItems.map(s => (
+                    <li key={s.label} className="ft-text-item">{s.label}</li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* تواصل معنا */}
+              <div>
+                <h3 className="ft-col-head">{isAr ? "تواصل معنا" : "Contact"}</h3>
+                <ul className="ft-list ft-list-sm">
+                  {contactItems.map((c, i) => (
+                    <li key={i} className="ft-text-item">{isAr ? c.ar : c.en}</li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* الشركة */}
+              <div>
+                <h3 className="ft-col-head">{isAr ? "الشركة" : "Company"}</h3>
+                <ul className="ft-list ft-list-links">
+                  {navLinks.map(l => (
+                    <li key={l.to}>
+                      <NavLink to={l.to} className={({ isActive }) => isActive ? "ft-nav-link ft-nav-link--active" : "ft-nav-link"}>
+                        {isAr ? l.ar : l.en}
+                      </NavLink>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* عن الشركة */}
+              <div>
+                <h3 className="ft-col-head ft-col-head-about">{isAr ? "شريكك في النقل والخدمات اللوجستية" : "Your Freight & Logistics Partner"}</h3>
+                <p style={{ fontSize: 13, lineHeight: 1.7, color: "var(--text-soft)", margin: "10px 0 0", textAlign: isAr ? "right" : "left" }}>
+                  {isAr
+                    ? "منذ عام 2002، تقدم شركة الشمس للنقل حلولًا متكاملة في مجال النقل والخدمات اللوجستية، مع خبرة في التعامل مع مختلف أنواع الشحنات والاحتياجات التشغيلية. نسعى إلى تقديم خدمات نقل موثوقة تجمع بين المرونة، المتابعة، والاهتمام بسلامة الشحنات."
+                    : "Since 2002, Elshams Transport has provided integrated freight and logistics solutions with expertise in handling various shipment types and operational needs. We strive to deliver reliable transport services combining flexibility, follow-up, and cargo safety."}
+                </p>
+              </div>
             </div>
 
-            {/* الشركة */}
-            <div>
-              <h3 className="ft-col-head">{isAr ? "الشركة" : "Company"}</h3>
-              <ul className="ft-list ft-list-links">
-                {navLinks.map(l => (
-                  <li key={l.to}>
-                    <NavLink to={l.to} className={({ isActive }) => isActive ? "ft-nav-link ft-nav-link--active" : "ft-nav-link"}>
-                      {isAr ? l.ar : l.en}
-                    </NavLink>
-                  </li>
-                ))}
-              </ul>
+            {/* CTA */}
+            <div className="ft-cta-btns" style={{ display: "flex", justifyContent: "center", gap: 12, padding: "6px 0 20px", direction: dir }}>
+              <NavLink to="/contact" style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                padding: "10px 20px", borderRadius: 40,
+                background: "#fff", color: "var(--ink)",
+                border: "1.5px solid #e3e6eb", fontSize: 13.5, fontWeight: 700,
+                textDecoration: "none",
+              }}>
+                {isAr ? "تواصل معنا" : "Contact Us"}
+                <IcoPhone />
+              </NavLink>
+              <NavLink to="/contact" style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                padding: "10px 20px", borderRadius: 40,
+                background: "var(--primary)", color: "#fff",
+                border: "none", fontSize: 13.5, fontWeight: 700,
+                textDecoration: "none",
+              }}>
+                {isAr ? "اطلب عرض سعر" : "Request a Quote"}
+                <IcoTruck />
+              </NavLink>
             </div>
 
-            {/* عن الشركة */}
-            <div>
-              <h3 className="ft-col-head ft-col-head-about">{isAr ? "شريكك في النقل والخدمات اللوجستية" : "Your Freight & Logistics Partner"}</h3>
-              <p style={{ fontSize: 13, lineHeight: 1.7, color: "var(--text-soft)", margin: "10px 0 0", textAlign: isAr ? "right" : "left" }}>
-                {isAr
-                  ? "منذ عام 2002، تقدم شركة الشمس للنقل حلولًا متكاملة في مجال النقل والخدمات اللوجستية، مع خبرة في التعامل مع مختلف أنواع الشحنات والاحتياجات التشغيلية. نسعى إلى تقديم خدمات نقل موثوقة تجمع بين المرونة، المتابعة، والاهتمام بسلامة الشحنات."
-                  : "Since 2002, Elshams Transport has provided integrated freight and logistics solutions with expertise in handling various shipment types and operational needs. We strive to deliver reliable transport services combining flexibility, follow-up, and cargo safety."}
-              </p>
-            </div>
-          </div>
-
-          {/* CTA */}
-          <div className="ft-cta-btns" style={{ display: "flex", justifyContent: "center", gap: 12, padding: "6px 0 20px", direction: dir }}>
-            <NavLink to="/contact" style={{
-              display: "inline-flex", alignItems: "center", gap: 8,
-              padding: "10px 20px", borderRadius: 40,
-              background: "#fff", color: "var(--ink)",
-              border: "1.5px solid #e3e6eb", fontSize: 13.5, fontWeight: 700,
-              textDecoration: "none",
+            {/* Bottom bar */}
+            <div style={{
+              borderTop: "1px solid #e3e6eb", paddingTop: 22,
+              display: "flex", justifyContent: "center", gap: 14,
+              fontSize: 13.5, color: "var(--text-soft)", flexWrap: "wrap",
+              paddingBottom: 24, direction: dir,
             }}>
-              {isAr ? "تواصل معنا" : "Contact Us"}
-              <IcoPhone />
-            </NavLink>
-            <NavLink to="/contact" style={{
-              display: "inline-flex", alignItems: "center", gap: 8,
-              padding: "10px 20px", borderRadius: 40,
-              background: "var(--primary)", color: "#fff",
-              border: "none", fontSize: 13.5, fontWeight: 700,
-              textDecoration: "none",
-            }}>
-              {isAr ? "اطلب عرض سعر" : "Request a Quote"}
-              <IcoTruck />
-            </NavLink>
-          </div>
-
-          {/* Bottom bar */}
-          <div style={{
-            borderTop: "1px solid #e3e6eb", paddingTop: 22,
-            display: "flex", justifyContent: "center", gap: 14,
-            fontSize: 13.5, color: "var(--text-soft)", flexWrap: "wrap",
-            paddingBottom: 24, direction: dir,
-          }}>
-            <a style={{ color: "inherit", textDecoration: "none" }}>
-              {isAr ? "© 2026 شركة الشمس للنقل. جميع الحقوق محفوظة." : "© 2026 Shams Transport. All rights reserved."}
-            </a>
-            <span style={{ opacity: 0.55 }}>|</span>
-            <a style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>{isAr ? "سياسة الخصوصية" : "Privacy Policy"}</a>
-            <span style={{ opacity: 0.55 }}>|</span>
-            <a style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>{isAr ? "الشروط والأحكام" : "Terms & Conditions"}</a>
+              <a style={{ color: "inherit", textDecoration: "none" }}>
+                {isAr ? "© 2026 شركة الشمس للنقل. جميع الحقوق محفوظة." : "© 2026 Shams Transport. All rights reserved."}
+              </a>
+              <span style={{ opacity: 0.55 }}>|</span>
+              <a style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>{isAr ? "سياسة الخصوصية" : "Privacy Policy"}</a>
+              <span style={{ opacity: 0.55 }}>|</span>
+              <a style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>{isAr ? "الشروط والأحكام" : "Terms & Conditions"}</a>
+            </div>
           </div>
         </div>
+
+        {/* ── MOBILE VIEW (<=768px) — MINIMAL, COMPACT & MODERN ── */}
+        <div className="ft-mobile-view" style={{ direction: dir }}>
+          <div className="ft-mobile-card">
+            {/* Logo */}
+            <div className="ft-mobile-logo-wrap">
+              <img src={footerLogoUrl} alt="ELSHAMS Freight & Logistics" className="ft-mobile-logo" />
+            </div>
+
+            {/* About Text (2-3 lines) */}
+            <p className="ft-mobile-about">
+              {isAr
+                ? "منذ عام 2002، تقدم شركة الشمس للنقل حلولًا متكاملة في مجال النقل والخدمات اللوجستية، مع خبرة في التعامل مع مختلف أنواع الشحنات والاحتياجات التشغيلية."
+                : "Since 2002, Elshams Transport has provided integrated freight & logistics solutions with expertise across all shipment types and operational needs."}
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="ft-mobile-cta">
+              <NavLink to="/contact" className="ft-mobile-btn ft-mobile-btn-sec">
+                <IcoPhone />
+                {isAr ? "تواصل معنا" : "Contact Us"}
+              </NavLink>
+              <NavLink to="/contact" className="ft-mobile-btn ft-mobile-btn-pri">
+                <IcoTruck />
+                {isAr ? "اطلب عرض سعر" : "Request a Quote"}
+              </NavLink>
+            </div>
+
+            {/* Contact Info Section with Icons */}
+            <div className="ft-mobile-sec">
+              <h4 className="ft-mobile-sec-title">{isAr ? "بيانات التواصل" : "Contact Info"}</h4>
+              <div className="ft-mobile-contact-list">
+                {contactItems.map((c, i) => (
+                  <div key={i} className="ft-mobile-contact-item">
+                    <span className="ft-mobile-contact-icon">{c.icon}</span>
+                    <span className="ft-mobile-contact-text">{isAr ? c.ar : c.en}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Company Links Section */}
+            <div className="ft-mobile-sec">
+              <h4 className="ft-mobile-sec-title">{isAr ? "روابط سريعة" : "Quick Links"}</h4>
+              <div className="ft-mobile-links-grid">
+                {navLinks.map(l => (
+                  <NavLink key={l.to} to={l.to} className="ft-mobile-nav-link">
+                    {isAr ? l.ar : l.en}
+                  </NavLink>
+                ))}
+              </div>
+            </div>
+
+            {/* Social Links Row */}
+            <div className="ft-mobile-social-row">
+              {socialItems.map(s => (
+                <a key={s.label} href="#" className="ft-mobile-social-chip">
+                  <span className="ft-mobile-social-icon">{s.icon}</span>
+                  <span>{s.label}</span>
+                </a>
+              ))}
+            </div>
+
+            {/* Bottom Copyright & Legal Links */}
+            <div className="ft-mobile-bottom">
+              <p className="ft-mobile-copy">
+                {isAr ? "© 2026 شركة الشمس للنقل. جميع الحقوق محفوظة." : "© 2026 Shams Transport. All rights reserved."}
+              </p>
+              <div className="ft-mobile-legal">
+                <a className="ft-mobile-legal-link">{isAr ? "سياسة الخصوصية" : "Privacy Policy"}</a>
+                <span className="ft-mobile-legal-dot">•</span>
+                <a className="ft-mobile-legal-link">{isAr ? "الشروط والأحكام" : "Terms & Conditions"}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </footer>
   )
