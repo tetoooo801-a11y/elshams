@@ -219,77 +219,82 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ── MOBILE VIEW (<=768px) — MINIMAL, COMPACT & MODERN ── */}
+        {/* ── MOBILE VIEW (<=768px) — COMPACT, INSIDE SAME WHITE ROUNDED CARD CONTAINER ── */}
         <div className="ft-mobile-view" style={{ direction: dir }}>
-          <div className="ft-mobile-card">
+          <div className="ft-card ft-mobile-card">
             {/* Logo */}
-            <div className="ft-mobile-logo-wrap">
-              <img src={footerLogoUrl} alt="ELSHAMS Freight & Logistics" className="ft-mobile-logo" />
+            <div style={{ textAlign: "center", marginBottom: 16 }}>
+              <img src={footerLogoUrl} alt="ELSHAMS Freight & Logistics" style={{ height: 56, maxWidth: "80%", width: "auto", objectFit: "contain", display: "inline-block" }} />
             </div>
 
-            {/* About Text (2-3 lines) */}
-            <p className="ft-mobile-about">
-              {isAr
-                ? "منذ عام 2002، تقدم شركة الشمس للنقل حلولًا متكاملة في مجال النقل والخدمات اللوجستية، مع خبرة في التعامل مع مختلف أنواع الشحنات والاحتياجات التشغيلية."
-                : "Since 2002, Elshams Transport has provided integrated freight & logistics solutions with expertise across all shipment types and operational needs."}
-            </p>
+            {/* 2 sections: "تواصل معنا" and "تابعنا" */}
+            <div className="ft-mobile-cols" style={{ display: "grid", gridTemplateColumns: "1.3fr 1fr", gap: 16, paddingBottom: 14, direction: dir }}>
+              {/* تواصل معنا */}
+              <div>
+                <h3 className="ft-col-head" style={{ fontSize: 13.5, fontWeight: 700, marginBottom: 8, color: "var(--ink)" }}>
+                  {isAr ? "تواصل معنا" : "Contact"}
+                </h3>
+                <ul className="ft-list ft-list-sm" style={{ display: "flex", flexDirection: "column", gap: 6, padding: 0, margin: 0, listStyle: "none" }}>
+                  {contactItems.map((c, i) => (
+                    <li key={i} className="ft-text-item" style={{ fontSize: 11.5, color: "var(--ink)", display: "flex", alignItems: "center", gap: 6, lineHeight: 1.35 }}>
+                      <span style={{ color: "var(--primary)", display: "flex", alignItems: "center", flexShrink: 0 }}>{c.icon}</span>
+                      <span>{isAr ? c.ar : c.en}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* تابعنا */}
+              <div>
+                <h3 className="ft-col-head" style={{ fontSize: 13.5, fontWeight: 700, marginBottom: 8, color: "var(--ink)" }}>
+                  {isAr ? "تابعنا" : "Follow Us"}
+                </h3>
+                <ul className="ft-list ft-list-sm" style={{ display: "flex", flexDirection: "column", gap: 8, padding: 0, margin: 0, listStyle: "none" }}>
+                  {socialItems.map(s => (
+                    <li key={s.label} className="ft-text-item" style={{ fontSize: 11.5, color: "var(--ink)", display: "flex", alignItems: "center", gap: 6 }}>
+                      <span style={{ color: "var(--primary)", display: "flex", alignItems: "center", flexShrink: 0 }}>{s.icon}</span>
+                      <span>{s.label}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
 
             {/* CTA Buttons */}
-            <div className="ft-mobile-cta">
-              <NavLink to="/contact" className="ft-mobile-btn ft-mobile-btn-sec">
-                <IcoPhone />
+            <div className="ft-cta-btns" style={{ display: "flex", gap: 10, padding: "4px 0 14px", direction: dir }}>
+              <NavLink to="/contact" style={{
+                flex: 1, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 6,
+                padding: "9px 12px", borderRadius: 40,
+                background: "#fff", color: "var(--ink)",
+                border: "1.5px solid #e3e6eb", fontSize: 12.5, fontWeight: 700,
+                textDecoration: "none", boxSizing: "border-box",
+              }}>
                 {isAr ? "تواصل معنا" : "Contact Us"}
+                <IcoPhone />
               </NavLink>
-              <NavLink to="/contact" className="ft-mobile-btn ft-mobile-btn-pri">
-                <IcoTruck />
+              <NavLink to="/contact" style={{
+                flex: 1, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 6,
+                padding: "9px 12px", borderRadius: 40,
+                background: "var(--primary)", color: "#fff",
+                border: "none", fontSize: 12.5, fontWeight: 700,
+                textDecoration: "none", boxSizing: "border-box",
+              }}>
                 {isAr ? "اطلب عرض سعر" : "Request a Quote"}
+                <IcoTruck />
               </NavLink>
             </div>
 
-            {/* Contact Info Section with Icons */}
-            <div className="ft-mobile-sec">
-              <h4 className="ft-mobile-sec-title">{isAr ? "بيانات التواصل" : "Contact Info"}</h4>
-              <div className="ft-mobile-contact-list">
-                {contactItems.map((c, i) => (
-                  <div key={i} className="ft-mobile-contact-item">
-                    <span className="ft-mobile-contact-icon">{c.icon}</span>
-                    <span className="ft-mobile-contact-text">{isAr ? c.ar : c.en}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Company Links Section */}
-            <div className="ft-mobile-sec">
-              <h4 className="ft-mobile-sec-title">{isAr ? "روابط سريعة" : "Quick Links"}</h4>
-              <div className="ft-mobile-links-grid">
-                {navLinks.map(l => (
-                  <NavLink key={l.to} to={l.to} className="ft-mobile-nav-link">
-                    {isAr ? l.ar : l.en}
-                  </NavLink>
-                ))}
-              </div>
-            </div>
-
-            {/* Social Links Row */}
-            <div className="ft-mobile-social-row">
-              {socialItems.map(s => (
-                <a key={s.label} href="#" className="ft-mobile-social-chip">
-                  <span className="ft-mobile-social-icon">{s.icon}</span>
-                  <span>{s.label}</span>
-                </a>
-              ))}
-            </div>
-
-            {/* Bottom Copyright & Legal Links */}
-            <div className="ft-mobile-bottom">
-              <p className="ft-mobile-copy">
-                {isAr ? "© 2026 شركة الشمس للنقل. جميع الحقوق محفوظة." : "© 2026 Shams Transport. All rights reserved."}
-              </p>
-              <div className="ft-mobile-legal">
-                <a className="ft-mobile-legal-link">{isAr ? "سياسة الخصوصية" : "Privacy Policy"}</a>
-                <span className="ft-mobile-legal-dot">•</span>
-                <a className="ft-mobile-legal-link">{isAr ? "الشروط والأحكام" : "Terms & Conditions"}</a>
+            {/* Bottom Bar */}
+            <div style={{
+              borderTop: "1px solid #e3e6eb", paddingTop: 12,
+              display: "flex", flexDirection: "column", alignItems: "center", gap: 6,
+              fontSize: 11.5, color: "var(--text-soft)", direction: dir, textAlign: "center",
+            }}>
+              <a>{isAr ? "© 2026 شركة الشمس للنقل. جميع الحقوق محفوظة." : "© 2026 Shams Transport. All rights reserved."}</a>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <a style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>{isAr ? "سياسة الخصوصية" : "Privacy Policy"}</a>
+                <span style={{ opacity: 0.55 }}>|</span>
+                <a style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>{isAr ? "الشروط والأحكام" : "Terms & Conditions"}</a>
               </div>
             </div>
           </div>
