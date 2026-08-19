@@ -122,7 +122,7 @@ export default function ScrollExpandHero({
           style={{
             width: `${mediaWidth}px`,
             height: `${mediaHeight}px`,
-            maxWidth: progress >= 1 ? "100vw" : "95vw",
+            maxWidth: progress >= 1 ? "100vw" : (isMobile ? "100vw" : "95vw"),
             maxHeight: progress >= 1 ? "100vh" : "85vh",
             borderRadius: `${20 * (1 - progress)}px`,
             boxShadow: progress >= 1 ? "none" : undefined,
