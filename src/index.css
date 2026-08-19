@@ -2809,6 +2809,92 @@ h3 { font-size: 21px; letter-spacing: -0.014em; line-height: 1.4; }
     flex-direction: column !important;
     text-align: center !important;
   }
+
+  /* MOBILE FOOTER — PROPERLY FORMATTED & SPACIOUS (2-COLUMN RESPONSIVE LAYOUT) */
+  footer {
+    padding: 0 16px 24px !important;
+    margin-top: 32px !important;
+  }
+
+  footer > div {
+    max-width: 100% !important;
+  }
+
+  .ft-card {
+    padding: 32px 20px 24px !important;
+    border-radius: 24px !important;
+    background: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  .ft-card > div[style*="text-align: center"] {
+    margin-bottom: 20px !important;
+  }
+
+  .ft-card > div[style*="text-align: center"] img {
+    height: 64px !important;
+    max-width: 90% !important;
+  }
+
+  .ft-cols-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 28px 20px !important;
+    padding-bottom: 24px !important;
+  }
+
+  .ft-col-head {
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .ft-col-head-about {
+    font-size: 15px !important;
+  }
+
+  .ft-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .ft-text-item, .ft-nav-link {
+    font-size: 13.5px !important;
+    line-height: 1.6 !important;
+  }
+
+  .ft-cols-grid p {
+    font-size: 13px !important;
+    line-height: 1.65 !important;
+    margin-top: 8px !important;
+  }
+
+  .ft-cta-btns {
+    flex-direction: column !important;
+    gap: 12px !important;
+    padding: 12px 0 24px !important;
+    width: 100% !important;
+  }
+
+  .ft-cta-btns a {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 13px 20px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    border-radius: 999px !important;
+    box-sizing: border-box !important;
+  }
+
+  .ft-card > div[style*="border-top"] {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding-top: 20px !important;
+    font-size: 12.5px !important;
+    text-align: center !important;
+  }
 }
 
 @media (max-width: 480px) {
